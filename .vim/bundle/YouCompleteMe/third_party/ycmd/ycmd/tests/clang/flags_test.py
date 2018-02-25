@@ -22,105 +22,208 @@ from __future__ import absolute_import
 # Not installing aliases from python-future; it's unreliable and slow.
 from builtins import *  # noqa
 
+import contextlib
 import os
 
 from nose.tools import eq_, ok_
 from ycmd.completers.cpp import flags
-from mock import patch, Mock
-from ycmd.tests.test_utils import MacOnly
+from mock import patch, MagicMock
+from types import ModuleType
+from ycmd.tests.test_utils import MacOnly, TemporaryTestDir
 from ycmd.responses import NoExtraConfDetected
-from ycmd.tests.clang import TemporaryClangProject, TemporaryClangTestDir
+from ycmd.tests.clang import TemporaryClangProject
 
 from hamcrest import assert_that, calling, contains, has_item, not_, raises
 
 
-@patch( 'ycmd.extra_conf_store.ModuleForSourceFile', return_value = Mock() )
-def FlagsForFile_FlagsNotReady_test( *args ):
-  fake_flags = {
-    'flags': [ ],
-    'flags_ready': False
-  }
+@contextlib.contextmanager
+def MockExtraConfModule( flags_for_file_function ):
+  module = MagicMock( spec = ModuleType )
+  module.FlagsForFile = flags_for_file_function
+  with patch( 'ycmd.extra_conf_store.ModuleForSourceFile',
+              return_value = module ):
+    yield
 
-  with patch( 'ycmd.completers.cpp.flags._CallExtraConfFlagsForFile',
-              return_value = fake_flags ):
-    flags_object = flags.Flags()
+
+def FlagsForFile_FlagsNotReady_test():
+  flags_object = flags.Flags()
+
+  def FlagsForFile( filename ):
+    return {
+      'flags': [],
+      'flags_ready': False
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
     flags_list = flags_object.FlagsForFile( '/foo', False )
-    eq_( list( flags_list ), [ ] )
+    eq_( list( flags_list ), [] )
 
 
-@patch( 'ycmd.extra_conf_store.ModuleForSourceFile', return_value = Mock() )
 def FlagsForFile_BadNonUnicodeFlagsAreAlsoRemoved_test( *args ):
-  fake_flags = {
-    'flags': [ bytes( b'-c' ), '-c', bytes( b'-foo' ), '-bar' ]
-  }
+  flags_object = flags.Flags()
 
-  with patch( 'ycmd.completers.cpp.flags._CallExtraConfFlagsForFile',
-              return_value = fake_flags ):
-    flags_object = flags.Flags()
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ bytes( b'-c' ), '-c', bytes( b'-foo' ), '-bar' ]
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
     flags_list = flags_object.FlagsForFile( '/foo', False )
     eq_( list( flags_list ), [ '-foo', '-bar' ] )
 
 
-@patch( 'ycmd.extra_conf_store.ModuleForSourceFile', return_value = Mock() )
-def FlagsForFile_FlagsCachedByDefault_test( *args ):
+def FlagsForFile_FlagsCachedByDefault_test():
   flags_object = flags.Flags()
 
-  results = { 'flags': [ '-x', 'c' ] }
-  with patch( 'ycmd.completers.cpp.flags._CallExtraConfFlagsForFile',
-              return_value = results ):
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ '-x', 'c' ]
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
     flags_list = flags_object.FlagsForFile( '/foo', False )
     assert_that( flags_list, contains( '-x', 'c' ) )
 
-  results[ 'flags' ] = [ '-x', 'c++' ]
-  with patch( 'ycmd.completers.cpp.flags._CallExtraConfFlagsForFile',
-              return_value = results ):
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ '-x', 'c++' ]
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
     flags_list = flags_object.FlagsForFile( '/foo', False )
     assert_that( flags_list, contains( '-x', 'c' ) )
 
 
-@patch( 'ycmd.extra_conf_store.ModuleForSourceFile', return_value = Mock() )
-def FlagsForFile_FlagsNotCachedWhenDoCacheIsFalse_test( *args ):
+def FlagsForFile_FlagsNotCachedWhenDoCacheIsFalse_test():
   flags_object = flags.Flags()
 
-  results = {
-    'flags': [ '-x', 'c' ],
-    'do_cache': False
-  }
-  with patch( 'ycmd.completers.cpp.flags._CallExtraConfFlagsForFile',
-              return_value = results ):
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ '-x', 'c' ],
+      'do_cache': False
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
     flags_list = flags_object.FlagsForFile( '/foo', False )
     assert_that( flags_list, contains( '-x', 'c' ) )
 
-  results[ 'flags' ] = [ '-x', 'c++' ]
-  with patch( 'ycmd.completers.cpp.flags._CallExtraConfFlagsForFile',
-              return_value = results ):
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ '-x', 'c++' ]
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
     flags_list = flags_object.FlagsForFile( '/foo', False )
     assert_that( flags_list, contains( '-x', 'c++' ) )
 
 
-@patch( 'ycmd.extra_conf_store.ModuleForSourceFile', return_value = Mock() )
-def FlagsForFile_FlagsCachedWhenDoCacheIsTrue_test( *args ):
+def FlagsForFile_FlagsCachedWhenDoCacheIsTrue_test():
   flags_object = flags.Flags()
 
-  results = {
-    'flags': [ '-x', 'c' ],
-    'do_cache': True
-  }
-  with patch( 'ycmd.completers.cpp.flags._CallExtraConfFlagsForFile',
-              return_value = results ):
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ '-x', 'c' ],
+      'do_cache': True
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
     flags_list = flags_object.FlagsForFile( '/foo', False )
     assert_that( flags_list, contains( '-x', 'c' ) )
 
-  results[ 'flags' ] = [ '-x', 'c++' ]
-  with patch( 'ycmd.completers.cpp.flags._CallExtraConfFlagsForFile',
-              return_value = results ):
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ '-x', 'c++' ]
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
     flags_list = flags_object.FlagsForFile( '/foo', False )
     assert_that( flags_list, contains( '-x', 'c' ) )
+
+
+def FlagsForFile_DoNotMakeRelativePathsAbsoluteByDefault_test():
+  flags_object = flags.Flags()
+
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ '-x', 'c', '-I', 'header' ]
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
+    flags_list = flags_object.FlagsForFile( '/foo', False )
+    assert_that( flags_list,
+                 contains( '-x', 'c',
+                           '-I', 'header' ) )
+
+
+def FlagsForFile_MakeRelativePathsAbsoluteIfOptionSpecified_test():
+  flags_object = flags.Flags()
+
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ '-x', 'c', '-I', 'header' ],
+      'include_paths_relative_to_dir': '/working_dir/'
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
+    flags_list = flags_object.FlagsForFile( '/foo', False )
+    assert_that( flags_list,
+                 contains( '-x', 'c',
+                           '-I', os.path.normpath( '/working_dir/header' ) ) )
+
+
+@MacOnly
+@patch( 'ycmd.completers.cpp.flags.MAC_INCLUDE_PATHS',
+        [ 'sentinel_value_for_testing' ] )
+def FlagsForFile_AddMacIncludePathsWithoutSysroot_test():
+  flags_object = flags.Flags()
+
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ '-test', '--test1', '--test2=test' ]
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
+    flags_list = flags_object.FlagsForFile( '/foo' )
+    assert_that( flags_list, has_item( 'sentinel_value_for_testing' ) )
+
+
+@MacOnly
+@patch( 'ycmd.completers.cpp.flags.MAC_INCLUDE_PATHS',
+        [ 'sentinel_value_for_testing' ] )
+def FlagsForFile_DoNotAddMacIncludePathsWithSysroot_test():
+  flags_object = flags.Flags()
+
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ '-isysroot', 'test1', '--test2=test' ]
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
+    flags_list = flags_object.FlagsForFile( '/foo' )
+    assert_that( flags_list, not_( has_item( 'sentinel_value_for_testing' ) ) )
+
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ '-test', '--sysroot', 'test1' ]
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
+    flags_list = flags_object.FlagsForFile( '/foo' )
+    assert_that( flags_list, not_( has_item( 'sentinel_value_for_testing' ) ) )
+
+  def FlagsForFile( filename ):
+    return {
+      'flags': [ '-test', 'test1', '--sysroot=test' ]
+    }
+
+  with MockExtraConfModule( FlagsForFile ):
+    flags_list = flags_object.FlagsForFile( '/foo' )
+    assert_that( flags_list, not_( has_item( 'sentinel_value_for_testing' ) ) )
 
 
 def RemoveUnusedFlags_Passthrough_test():
   eq_( [ '-foo', '-bar' ],
-       flags._RemoveUnusedFlags( [ '-foo', '-bar' ], 'file' ) )
+       flags._RemoveUnusedFlags( [ '-foo', '-bar' ], 'file', False ) )
 
 
 def RemoveUnusedFlags_RemoveDashC_test():
@@ -129,14 +232,14 @@ def RemoveUnusedFlags_RemoveDashC_test():
   filename = 'file'
 
   eq_( expected,
-       flags._RemoveUnusedFlags( expected + to_remove, filename ) )
+       flags._RemoveUnusedFlags( expected + to_remove, filename, False ) )
 
   eq_( expected,
-       flags._RemoveUnusedFlags( to_remove + expected, filename ) )
+       flags._RemoveUnusedFlags( to_remove + expected, filename, False ) )
 
   eq_( expected,
        flags._RemoveUnusedFlags(
-         expected[ :1 ] + to_remove + expected[ -1: ], filename ) )
+         expected[ :1 ] + to_remove + expected[ -1: ], filename, False ) )
 
 
 def RemoveUnusedFlags_RemoveColor_test():
@@ -145,14 +248,14 @@ def RemoveUnusedFlags_RemoveColor_test():
   filename = 'file'
 
   eq_( expected,
-       flags._RemoveUnusedFlags( expected + to_remove, filename ) )
+       flags._RemoveUnusedFlags( expected + to_remove, filename, False ) )
 
   eq_( expected,
-       flags._RemoveUnusedFlags( to_remove + expected, filename ) )
+       flags._RemoveUnusedFlags( to_remove + expected, filename, False ) )
 
   eq_( expected,
        flags._RemoveUnusedFlags(
-         expected[ :1 ] + to_remove + expected[ -1: ], filename ) )
+         expected[ :1 ] + to_remove + expected[ -1: ], filename, False ) )
 
 
 def RemoveUnusedFlags_RemoveDashO_test():
@@ -161,14 +264,14 @@ def RemoveUnusedFlags_RemoveDashO_test():
   filename = 'file'
 
   eq_( expected,
-       flags._RemoveUnusedFlags( expected + to_remove, filename ) )
+       flags._RemoveUnusedFlags( expected + to_remove, filename, False ) )
 
   eq_( expected,
-       flags._RemoveUnusedFlags( to_remove + expected, filename ) )
+       flags._RemoveUnusedFlags( to_remove + expected, filename, False ) )
 
   eq_( expected,
        flags._RemoveUnusedFlags(
-         expected[ :1 ] + to_remove + expected[ -1: ], filename ) )
+         expected[ :1 ] + to_remove + expected[ -1: ], filename, False ) )
 
 
 def RemoveUnusedFlags_RemoveMP_test():
@@ -177,14 +280,14 @@ def RemoveUnusedFlags_RemoveMP_test():
   filename = 'file'
 
   eq_( expected,
-       flags._RemoveUnusedFlags( expected + to_remove, filename ) )
+       flags._RemoveUnusedFlags( expected + to_remove, filename, False ) )
 
   eq_( expected,
-       flags._RemoveUnusedFlags( to_remove + expected, filename ) )
+       flags._RemoveUnusedFlags( to_remove + expected, filename, False ) )
 
   eq_( expected,
        flags._RemoveUnusedFlags(
-         expected[ :1 ] + to_remove + expected[ -1: ], filename ) )
+         expected[ :1 ] + to_remove + expected[ -1: ], filename, False ) )
 
 
 def RemoveUnusedFlags_RemoveFilename_test():
@@ -193,15 +296,15 @@ def RemoveUnusedFlags_RemoveFilename_test():
   filename = 'file'
 
   eq_( expected,
-       flags._RemoveUnusedFlags( expected + to_remove, filename ) )
+       flags._RemoveUnusedFlags( expected + to_remove, filename, False ) )
 
   eq_( expected,
        flags._RemoveUnusedFlags( expected[ :1 ] + to_remove + expected[ 1: ],
-                                 filename ) )
+                                 filename, False ) )
 
   eq_( expected,
        flags._RemoveUnusedFlags(
-         expected[ :1 ] + to_remove + expected[ -1: ], filename ) )
+         expected[ :1 ] + to_remove + expected[ -1: ], filename, False ) )
 
 
 def RemoveUnusedFlags_RemoveFlagWithoutPrecedingDashFlag_test():
@@ -210,11 +313,50 @@ def RemoveUnusedFlags_RemoveFlagWithoutPrecedingDashFlag_test():
   filename = 'file'
 
   eq_( expected,
-       flags._RemoveUnusedFlags( expected + to_remove, filename ) )
+       flags._RemoveUnusedFlags( expected + to_remove, filename, False ) )
 
   eq_( expected,
        flags._RemoveUnusedFlags( expected[ :1 ] + to_remove + expected[ 1: ],
-                                 filename ) )
+                                 filename, False ) )
+  expected = [ 'g++', '-foo', '--driver-mode=cl', '-xc++', '-bar',
+               'include_dir', '/I', 'include_dir_other' ]
+  to_remove = [ '..' ]
+  filename = 'file'
+
+  eq_( expected,
+       flags._RemoveUnusedFlags( expected + to_remove, filename, True ) )
+
+  eq_( expected,
+       flags._RemoveUnusedFlags( expected[ :1 ] + to_remove + expected[ 1: ],
+                                 filename, True ) )
+
+
+def RemoveUnusedFlags_MultipleDriverModeFlags_test():
+  expected = [ 'g++',
+               '--driver-mode=cl',
+               '/Zi',
+               '-foo',
+               '--driver-mode=gcc',
+               '--driver-mode=cl',
+               'include_dir' ]
+  to_remove = [ 'unrelated_file', '/c' ]
+  filename = 'file'
+
+  eq_( expected,
+       flags._RemoveUnusedFlags( expected + to_remove, filename, True ) )
+  eq_( expected,
+       flags._RemoveUnusedFlags( expected[ :1 ] + to_remove + expected[ 1: ],
+                                 filename, True ) )
+
+  flags_expected = [ '/usr/bin/g++', '--driver-mode=cl', '--driver-mode=gcc' ]
+  flags_all = [ '/usr/bin/g++',
+                '/Zi',
+                '--driver-mode=cl',
+                '/foo',
+                '--driver-mode=gcc' ]
+  filename = 'file'
+
+  eq_( flags_expected, flags._RemoveUnusedFlags( flags_all, filename, False ) )
 
 
 def RemoveUnusedFlags_Depfiles_test():
@@ -234,7 +376,7 @@ def RemoveUnusedFlags_Depfiles_test():
     '-arch', 'armv7',
   ]
 
-  assert_that( flags._RemoveUnusedFlags( full_flags, 'test.m' ),
+  assert_that( flags._RemoveUnusedFlags( full_flags, 'test.m', False ),
                contains( *expected ) )
 
 
@@ -262,19 +404,19 @@ def RemoveUnusedFlags_RemoveFilenameWithoutPrecedingInclude_test():
     expected = [ 'clang', flag, '/foo/bar', '-isystem/zoo/goo' ]
 
     eq_( expected,
-         flags._RemoveUnusedFlags( expected + to_remove, filename ) )
+         flags._RemoveUnusedFlags( expected + to_remove, filename, False ) )
 
     eq_( expected,
          flags._RemoveUnusedFlags( expected[ :1 ] + to_remove + expected[ 1: ],
-                                   filename ) )
+                                   filename, False ) )
 
     eq_( expected + expected[ 1: ],
          flags._RemoveUnusedFlags( expected + to_remove + expected[ 1: ],
-                                   filename ) )
+                                   filename, False ) )
 
   include_flags = [ '-isystem', '-I', '-iquote', '-isysroot', '--sysroot',
                     '-gcc-toolchain', '-include', '-include-pch',
-                    '-iframework', '-F', '-imacros' ]
+                    '-iframework', '-F', '-imacros', '-idirafter' ]
   to_remove = [ '/moo/boo' ]
   filename = 'file'
 
@@ -299,7 +441,11 @@ def RemoveXclangFlags_test():
 
 def AddLanguageFlagWhenAppropriate_Passthrough_test():
   eq_( [ '-foo', '-bar' ],
-       flags._AddLanguageFlagWhenAppropriate( [ '-foo', '-bar' ] ) )
+       flags._AddLanguageFlagWhenAppropriate( [ '-foo', '-bar' ], False ) )
+  eq_( [ '-foo', '-bar', '--driver-mode=cl' ],
+       flags._AddLanguageFlagWhenAppropriate( [ '-foo',
+                                                '-bar',
+                                                '--driver-mode=cl' ], True ) )
 
 
 def _AddLanguageFlagWhenAppropriateTester( compiler, language_flag = [] ):
@@ -313,7 +459,7 @@ def _AddLanguageFlagWhenAppropriateTester( compiler, language_flag = [] ):
   for to_remove in to_removes:
     eq_( [ compiler ] + language_flag + expected,
          flags._AddLanguageFlagWhenAppropriate( to_remove + [ compiler ] +
-                                                expected ) )
+                                                expected, False ) )
 
 
 def AddLanguageFlagWhenAppropriate_CCompiler_test():
@@ -353,9 +499,8 @@ def ExtraClangFlags_test():
 @patch( 'ycmd.completers.cpp.flags._MacClangIncludeDirExists',
         side_effect = [ False, True, True, True ] )
 def Mac_LatestMacClangIncludes_test( *args ):
-  eq_( flags._LatestMacClangIncludes(),
-       [ '/Applications/Xcode.app/Contents/Developer/Toolchains/'
-         'XcodeDefault.xctoolchain/usr/lib/clang/7.0.2/include' ] )
+  eq_( flags._LatestMacClangIncludes( '/tmp' ),
+       [ '/tmp/usr/lib/clang/7.0.2/include' ] )
 
 
 @MacOnly
@@ -364,62 +509,43 @@ def Mac_LatestMacClangIncludes_NoSuchDirectory_test():
     raise OSError( x )
 
   with patch( 'os.listdir', side_effect = RaiseOSError ):
-    eq_( flags._LatestMacClangIncludes(), [] )
+    eq_( flags._LatestMacClangIncludes( '/tmp' ), [] )
 
 
 @MacOnly
-def Mac_PathsForAllMacToolchains_test():
-  eq_( flags._PathsForAllMacToolchains( 'test' ),
-       [ '/Applications/Xcode.app/Contents/Developer/Toolchains/'
-         'XcodeDefault.xctoolchain/test',
-         '/Library/Developer/CommandLineTools/test' ] )
+@patch( 'ycmd.completers.cpp.flags._MacClangIncludeDirExists',
+        side_effect = [ False, False ] )
+def Mac_SelectMacToolchain_None_test( *args ):
+  eq_( flags._SelectMacToolchain(), None )
+
+
+@MacOnly
+@patch( 'ycmd.completers.cpp.flags._MacClangIncludeDirExists',
+        side_effect = [ True, False ] )
+def Mac_SelectMacToolchain_XCode_test( *args ):
+  eq_( flags._SelectMacToolchain(),
+       '/Applications/Xcode.app/Contents/Developer/Toolchains/'
+       'XcodeDefault.xctoolchain' )
+
+
+@MacOnly
+@patch( 'ycmd.completers.cpp.flags._MacClangIncludeDirExists',
+        side_effect = [ False, True ] )
+def Mac_SelectMacToolchain_CommandLineTools_test( *args ):
+  eq_( flags._SelectMacToolchain(), '/Library/Developer/CommandLineTools' )
 
 
 def CompilationDatabase_NoDatabase_test():
-  with TemporaryClangTestDir() as tmp_dir:
+  with TemporaryTestDir() as tmp_dir:
     assert_that(
       calling( flags.Flags().FlagsForFile ).with_args(
         os.path.join( tmp_dir, 'test.cc' ) ),
       raises( NoExtraConfDetected ) )
 
 
-@MacOnly
-@patch( 'ycmd.completers.cpp.flags._MacIncludePaths',
-        return_value = [ 'sentinel_value_for_testing' ] )
-def PrepareFlagsForClang_NoSysroot_test( *args ):
-  assert_that(
-    list( flags.PrepareFlagsForClang( [ '-test', '--test1', '--test2=test' ],
-                                      'test.cc',
-                                      True ) ),
-    has_item( 'sentinel_value_for_testing' ) )
-
-
-@MacOnly
-@patch( 'ycmd.completers.cpp.flags._MacIncludePaths',
-        return_value = [ 'sentinel_value_for_testing' ] )
-def PrepareFlagsForClang_Sysroot_test( *args ):
-  assert_that(
-    list( flags.PrepareFlagsForClang( [ '-isysroot', 'test1', '--test2=test' ],
-                                      'test.cc',
-                                      True ) ),
-    not_( has_item( 'sentinel_value_for_testing' ) ) )
-
-  assert_that(
-    list( flags.PrepareFlagsForClang( [ '-test', '--sysroot', 'test1' ],
-                                      'test.cc',
-                                      True ) ),
-    not_( has_item( 'sentinel_value_for_testing' ) ) )
-
-  assert_that(
-    list( flags.PrepareFlagsForClang( [ '-test', 'test1', '--sysroot=test' ],
-                                      'test.cc',
-                                      True ) ),
-    not_( has_item( 'sentinel_value_for_testing' ) ) )
-
-
 def CompilationDatabase_FileNotInDatabase_test():
   compile_commands = [ ]
-  with TemporaryClangTestDir() as tmp_dir:
+  with TemporaryTestDir() as tmp_dir:
     with TemporaryClangProject( tmp_dir, compile_commands ):
       eq_(
         flags.Flags().FlagsForFile( os.path.join( tmp_dir, 'test.cc' ) ),
@@ -427,7 +553,7 @@ def CompilationDatabase_FileNotInDatabase_test():
 
 
 def CompilationDatabase_InvalidDatabase_test():
-  with TemporaryClangTestDir() as tmp_dir:
+  with TemporaryTestDir() as tmp_dir:
     with TemporaryClangProject( tmp_dir, 'this is junk' ):
       assert_that(
         calling( flags.Flags().FlagsForFile ).with_args(
@@ -436,7 +562,7 @@ def CompilationDatabase_InvalidDatabase_test():
 
 
 def CompilationDatabase_UseFlagsFromDatabase_test():
-  with TemporaryClangTestDir() as tmp_dir:
+  with TemporaryTestDir() as tmp_dir:
     compile_commands = [
       {
         'directory': tmp_dir,
@@ -460,7 +586,7 @@ def CompilationDatabase_UseFlagsFromDatabase_test():
 
 
 def CompilationDatabase_UseFlagsFromSameDir_test():
-  with TemporaryClangTestDir() as tmp_dir:
+  with TemporaryTestDir() as tmp_dir:
     compile_commands = [
       {
         'directory': tmp_dir,
@@ -507,7 +633,7 @@ def CompilationDatabase_UseFlagsFromSameDir_test():
 
 
 def CompilationDatabase_HeaderFileHeuristic_test():
-  with TemporaryClangTestDir() as tmp_dir:
+  with TemporaryTestDir() as tmp_dir:
     compile_commands = [
       {
         'directory': tmp_dir,
@@ -531,7 +657,7 @@ def CompilationDatabase_HeaderFileHeuristic_test():
 
 
 def CompilationDatabase_HeaderFileHeuristicNotFound_test():
-  with TemporaryClangTestDir() as tmp_dir:
+  with TemporaryTestDir() as tmp_dir:
     compile_commands = [
       {
         'directory': tmp_dir,
@@ -548,6 +674,34 @@ def CompilationDatabase_HeaderFileHeuristicNotFound_test():
           os.path.join( tmp_dir, 'not_in_the_db.h' ),
           add_extra_clang_flags = False ),
         [] )
+
+
+def CompilationDatabase_ExplicitHeaderFileEntry_test():
+  with TemporaryTestDir() as tmp_dir:
+    # Have an explicit header file entry which should take priority over the
+    # corresponding source file
+    compile_commands = [
+      {
+        'directory': tmp_dir,
+        'command': 'clang++ -x c++ -I. -I/absolute/path -Wall',
+        'file': os.path.join( tmp_dir, 'test.cc' ),
+      },
+      {
+        'directory': tmp_dir,
+        'command': 'clang++ -I/absolute/path -Wall',
+        'file': os.path.join( tmp_dir, 'test.h' ),
+      },
+    ]
+    with TemporaryClangProject( tmp_dir, compile_commands ):
+      assert_that(
+        flags.Flags().FlagsForFile(
+          os.path.join( tmp_dir, 'test.h' ),
+          add_extra_clang_flags = False ),
+        contains( 'clang++',
+                  '-x',
+                  'c++',
+                  '-I' + os.path.normpath( '/absolute/path' ),
+                  '-Wall' ) )
 
 
 def _MakeRelativePathsInFlagsAbsoluteTest( test ):
@@ -580,6 +734,10 @@ def MakeRelativePathsInFlagsAbsolute_test():
       'flags':  [ '-include-pch', '/test' ],
       'expect': [ '-include-pch', os.path.normpath( '/test' ) ],
     },
+    {
+      'flags':  [ '-idirafter', '/test' ],
+      'expect': [ '-idirafter', os.path.normpath( '/test' ) ],
+    },
 
     # Already absolute, single arguments
     {
@@ -602,6 +760,11 @@ def MakeRelativePathsInFlagsAbsolute_test():
       'flags':  [ '-include-pch/test' ],
       'expect': [ '-include-pch' + os.path.normpath( '/test' ) ],
     },
+    {
+      'flags':  [ '-idirafter/test' ],
+      'expect': [ '-idirafter' + os.path.normpath( '/test' ) ],
+    },
+
 
     # Already absolute, double-dash arguments
     {
@@ -623,6 +786,10 @@ def MakeRelativePathsInFlagsAbsolute_test():
     {
       'flags':  [ '--include-pch=/test' ],
       'expect': [ '--include-pch=/test' ],
+    },
+    {
+      'flags':  [ '--idirafter=/test' ],
+      'expect': [ '--idirafter=/test' ],
     },
 
     # Relative, positional arguments
@@ -649,6 +816,11 @@ def MakeRelativePathsInFlagsAbsolute_test():
     {
       'flags':  [ '-include-pch', 'test' ],
       'expect': [ '-include-pch', os.path.normpath( '/test/test' ) ],
+      'wd':     '/test',
+    },
+    {
+      'flags':  [ '-idirafter', 'test' ],
+      'expect': [ '-idirafter', os.path.normpath( '/test/test' ) ],
       'wd':     '/test',
     },
 
@@ -678,6 +850,11 @@ def MakeRelativePathsInFlagsAbsolute_test():
       'expect': [ '-include-pch' + os.path.normpath( '/test/test' ) ],
       'wd':     '/test',
     },
+    {
+      'flags':  [ '-idiraftertest' ],
+      'expect': [ '-idirafter' + os.path.normpath( '/test/test' ) ],
+      'wd':     '/test',
+    },
 
     # Already absolute, double-dash arguments
     {
@@ -703,6 +880,11 @@ def MakeRelativePathsInFlagsAbsolute_test():
     {
       'flags':  [ '--include-pch=test' ],
       'expect': [ '--include-pch=test' ],
+      'wd':     '/test',
+    },
+    {
+      'flags':  [ '--idirafter=test' ],
+      'expect': [ '--idirafter=test' ],
       'wd':     '/test',
     },
   ]

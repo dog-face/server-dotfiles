@@ -1,15 +1,19 @@
 from textwrap import dedent
 
+import parso
+
 from jedi._compatibility import builtins, is_py3
-from jedi.parser.python import load_grammar
-from jedi.evaluate import compiled, instance
-from jedi.evaluate.representation import FunctionContext
+from jedi.evaluate import compiled
+from jedi.evaluate.context import instance
+from jedi.evaluate.context.function import FunctionContext
 from jedi.evaluate import Evaluator
+from jedi.evaluate.project import Project
+from jedi.parser_utils import clean_scope_docstring
 from jedi import Script
 
 
 def _evaluator():
-    return Evaluator(load_grammar())
+    return Evaluator(parso.load_grammar(), Project())
 
 
 def test_simple():
@@ -33,7 +37,8 @@ def test_fake_loading():
 
 
 def test_fake_docstr():
-    assert compiled.create(_evaluator(), next).tree_node.raw_doc == next.__doc__
+    node = compiled.create(_evaluator(), next).tree_node
+    assert clean_scope_docstring(node) == next.__doc__
 
 
 def test_parse_function_doc_illegal_docstr():
@@ -51,7 +56,7 @@ def test_doc():
     just a Jedi API definition.
     """
     obj = compiled.CompiledObject(_evaluator(), ''.__getnewargs__)
-    assert obj.doc == ''
+    assert obj.py__doc__() == ''
 
 
 def test_string_literals():
@@ -89,3 +94,7 @@ def test_time_docstring():
     import time
     comp, = Script('import time\ntime.sleep').completions()
     assert comp.docstring() == time.sleep.__doc__
+
+
+def test_dict_values():
+    assert Script('import sys\nsys.modules["alshdb;lasdhf"]').goto_definitions()

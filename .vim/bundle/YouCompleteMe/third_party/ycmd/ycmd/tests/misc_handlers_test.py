@@ -175,7 +175,7 @@ def MiscHandlers_DebugInfo_NoExtraConfFound_test( app ):
   )
 
 
-@IsolatedYcmd
+@IsolatedYcmd()
 def MiscHandlers_DebugInfo_ExtraConfFoundButNotLoaded_test( app ):
   filepath = PathToTestFile( 'extra_conf', 'project', '.ycm_extra_conf.py' )
   request_data = BuildRequest( filepath = filepath )
@@ -197,3 +197,18 @@ def MiscHandlers_DebugInfo_ExtraConfFoundButNotLoaded_test( app ):
       'completer': None
     } )
   )
+
+
+@SharedYcmd
+def MiscHandlers_ReceiveMessages_NoCompleter_test( app ):
+  request_data = BuildRequest()
+  assert_that( app.post_json( '/receive_messages', request_data ).json,
+               equal_to( False ) )
+
+
+@SharedYcmd
+def MiscHandlers_ReceiveMessages_NotSupportedByCompleter_test( app ):
+  with PatchCompleter( DummyCompleter, filetype = 'dummy_filetype' ):
+    request_data = BuildRequest( filetype = 'dummy_filetype' )
+    assert_that( app.post_json( '/receive_messages', request_data ).json,
+                 equal_to( False ) )

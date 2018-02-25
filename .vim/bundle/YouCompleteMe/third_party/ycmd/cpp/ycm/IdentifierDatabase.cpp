@@ -68,14 +68,16 @@ void IdentifierDatabase::ClearCandidatesStoredForFile(
 void IdentifierDatabase::ResultsForQueryAndType(
   const std::string &query,
   const std::string &filetype,
-  std::vector< Result > &results ) const {
+  std::vector< Result > &results,
+  const size_t max_results ) const {
   FiletypeCandidateMap::const_iterator it;
   {
     std::lock_guard< std::mutex > locker( filetype_candidate_map_mutex_ );
     it = filetype_candidate_map_.find( filetype );
 
-    if ( it == filetype_candidate_map_.end() || query.empty() )
+    if ( it == filetype_candidate_map_.end() ) {
       return;
+    }
   }
   Bitset query_bitset = LetterBitsetFromString( query );
   bool query_has_uppercase_letters = HasUppercase( query );
@@ -88,24 +90,28 @@ void IdentifierDatabase::ResultsForQueryAndType(
     for ( const FilepathToCandidates::value_type & path_and_candidates :
               *it->second ) {
       for ( const Candidate * candidate : *path_and_candidates.second ) {
-        if ( ContainsKey( seen_candidates, candidate ) )
+        if ( ContainsKey( seen_candidates, candidate ) ) {
           continue;
-        else
+        } else {
           seen_candidates.insert( candidate );
+        }
 
-        if ( !candidate->MatchesQueryBitset( query_bitset ) )
+        if ( candidate->Text().empty() ||
+             !candidate->MatchesQueryBitset( query_bitset ) ) {
           continue;
+        }
 
         Result result = candidate->QueryMatchResult(
                           query, query_has_uppercase_letters );
 
-        if ( result.IsSubsequence() )
+        if ( result.IsSubsequence() ) {
           results.push_back( result );
+        }
       }
     }
   }
 
-  std::sort( results.begin(), results.end() );
+  PartialSort( results, max_results );
 }
 
 
@@ -117,14 +123,16 @@ std::set< const Candidate * > &IdentifierDatabase::GetCandidateSet(
   std::shared_ptr< FilepathToCandidates > &path_to_candidates =
     filetype_candidate_map_[ filetype ];
 
-  if ( !path_to_candidates )
+  if ( !path_to_candidates ) {
     path_to_candidates.reset( new FilepathToCandidates() );
+  }
 
   std::shared_ptr< std::set< const Candidate * > > &candidates =
     ( *path_to_candidates )[ filepath ];
 
-  if ( !candidates )
+  if ( !candidates ) {
     candidates.reset( new std::set< const Candidate * >() );
+  }
 
   return *candidates;
 }

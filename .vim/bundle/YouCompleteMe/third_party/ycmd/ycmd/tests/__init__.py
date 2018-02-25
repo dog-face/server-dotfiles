@@ -25,8 +25,7 @@ from builtins import *  # noqa
 import functools
 import os
 
-from ycmd import handlers
-from ycmd.tests.test_utils import ClearCompletionsCache, SetUpApp
+from ycmd.tests.test_utils import ClearCompletionsCache, IsolatedApp, SetUpApp
 
 shared_app = None
 
@@ -60,20 +59,28 @@ def SharedYcmd( test ):
   return Wrapper
 
 
-def IsolatedYcmd( test ):
+def IsolatedYcmd( custom_options = {} ):
   """Defines a decorator to be attached to tests of this package. This decorator
   passes a unique ycmd application as a parameter. It should be used on tests
   that change the server state in a irreversible way (ex: a semantic subserver
   is stopped or restarted) or expect a clean state (ex: no semantic subserver
-  started, no .ycm_extra_conf.py loaded, etc).
+  started, no .ycm_extra_conf.py loaded, etc). Use the optional parameter
+  |custom_options| to give additional options and/or override the default ones.
 
-  Do NOT attach it to test generators but directly to the yielded tests."""
-  @functools.wraps( test )
-  def Wrapper( *args, **kwargs ):
-    old_server_state = handlers._server_state
+  Do NOT attach it to test generators but directly to the yielded tests.
 
-    try:
-      test( SetUpApp(), *args, **kwargs )
-    finally:
-      handlers._server_state = old_server_state
-  return Wrapper
+  Example usage:
+
+    from ycmd.tests import IsolatedYcmd
+
+    @IsolatedYcmd( { 'auto_trigger': 0 } )
+    def CustomAutoTrigger_test( app ):
+        ...
+  """
+  def Decorator( test ):
+    @functools.wraps( test )
+    def Wrapper( *args, **kwargs ):
+      with IsolatedApp( custom_options ) as app:
+        test( app, *args, **kwargs )
+    return Wrapper
+  return Decorator

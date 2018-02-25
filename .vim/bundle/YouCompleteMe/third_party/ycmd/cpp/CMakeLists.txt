@@ -56,6 +56,27 @@ endif()
 
 #############################################################################
 
+# Linux distribution detection.
+
+# Red Hat and CentOS detection.
+if ( EXISTS /etc/redhat-release )
+  file( READ /etc/redhat-release CONTENTS )
+  if ( CONTENTS MATCHES "Red Hat" )
+    set( DISTRIBUTION "Red Hat" )
+  elseif ( CONTENTS MATCHES "CentOS" )
+    set( DISTRIBUTION "CentOS" )
+  endif()
+# Gentoo detection. Needed because Gentoo is a special snowflake that puts
+# llvm in weird places.
+elseif ( EXISTS /etc/os-release )
+  file( READ /etc/os-release CONTENTS )
+  if ( CONTENTS MATCHES "Gentoo" )
+    set( DISTRIBUTION "Gentoo" )
+  endif()
+endif()
+
+#############################################################################
+
 # Turning on this flag tells cmake to emit a compile_commands.json file.
 # This file can be used to load compilation flags into YCM. See here for more
 # details: http://clang.llvm.org/docs/JSONCompilationDatabase.html
@@ -105,6 +126,29 @@ endif()
 
 #############################################################################
 
+# MSVC has symbols hidden by default. On GCC and Clang we need to explicitly
+# set the visibility to hidden to achieve the same result and then manually
+# expose what we need. This results in smaller ycm_core dynamic library and thus
+# a shorter loading time and higher performance.
+if( CMAKE_COMPILER_IS_GNUCXX OR COMPILER_IS_CLANG )
+  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden" )
+endif()
+
+if ( DEFINED ENV{YCM_BENCHMARK} OR DEFINED ENV{YCM_TESTRUN})
+  if ( MSVC )
+    add_definitions( -DYCM_EXPORT=__declspec\(\ dllexport\ \) )
+  elseif( CMAKE_COMPILER_IS_GNUCXX OR COMPILER_IS_CLANG )
+    add_definitions(
+      -DYCM_EXPORT=__attribute__\(\(visibility\(\"default\"\)\)\) )
+  else()
+    add_definitions( -DYCM_EXPORT= )
+  endif()
+else()
+  add_definitions( -DYCM_EXPORT= )
+endif()
+
+#############################################################################
+
 # Force release build by default, speed is of the essence
 if ( NOT CMAKE_BUILD_TYPE )
   set( CMAKE_BUILD_TYPE Release )
@@ -115,7 +159,7 @@ endif()
 # Determining the presence of C++11 support in the compiler
 set( CPP11_AVAILABLE false )
 if ( CMAKE_COMPILER_IS_GNUCXX )
-  if ( NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.9 )
+  if ( NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.8 )
     set( CPP11_AVAILABLE true )
   endif()
 elseif( COMPILER_IS_CLANG )
@@ -180,42 +224,27 @@ else()
   # Platform-specific advice goes here. In particular, we have plenty of users
   # in corporate environments on RHEL/CentOS, where the default system compiler
   # is too old.
-  #
-  # We use lsb_release on linux systems to detect the distro/verseion.
-  # Other platforms (Mac, Windows) won't have this, and it might not be installed
-  # on all linux installations, but it is the _most_ portable way.
-  find_program( LSB_RELEASE lsb_release )
-  if ( NOT ${LSB_RELEASE} STREQUAL "LSB_RELEASE-NOTFOUND" )
-    execute_process( COMMAND ${LSB_RELEASE} -is
-                     OUTPUT_VARIABLE LSB_RELEASE_ID
-                     OUTPUT_STRIP_TRAILING_WHITESPACE)
-    execute_process( COMMAND ${LSB_RELEASE} -rs
-                     OUTPUT_VARIABLE LSB_RELEASE_VERSION
-                     OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-    # on RHEL and CentOS, users require the devtoolset-3
-    # or greater. However, we recommended the devtoolset-6 because it is the
-    # newest at the time of writing. And why not.
-    if ( ${LSB_RELEASE_ID} STREQUAL "CentOS" OR
-         ${LSB_RELEASE_ID} STREQUAL "RedHatEnterpriseServer" )
-      message( STATUS "NOTE: You appear to be on ${LSB_RELEASE_ID} version "
-      "${LSB_RELEASE_VERSION}. In order to use this application, you require a "
-      "more modern compiler than the default compiler on this platform. "
-      "Please install the devtoolset-6 or greater. For example, see this link: "
-      "https://www.softwarecollections.org/en/scls/rhscl/devtoolset-6/" )
+  # on RHEL and CentOS, users require the devtoolset-3 or greater. However, we
+  # recommended the devtoolset-6 because it is the newest at the time of
+  # writing. And why not.
+  if ( DISTRIBUTION STREQUAL "CentOS" OR DISTRIBUTION STREQUAL "Red Hat" )
+    message( STATUS "NOTE: You appear to be on ${DISTRIBUTION}. "
+    "In order to use this application, you require a more modern compiler "
+    "than the default compiler on this platform. "
+    "Please install the devtoolset-6 or greater. For example, see this link: "
+    "https://www.softwarecollections.org/en/scls/rhscl/devtoolset-6/" )
 
-      # Finally, just check if it is installed and they just need to activate it
-      if ( EXISTS /opt/rh/devtoolset-6 )
-        message( STATUS "NOTE: It looks like you have the devtoolset-6 "
-                        "installed in /opt/rh/devtoolset-6, so you probably "
-                        "just need to activate it and re-run the installation. "
-                        "For example: source /opt/rh/devtoolset-6/enable")
-      endif()
+    # Finally, just check if it is installed and they just need to activate it.
+    if ( EXISTS /opt/rh/devtoolset-6 )
+      message( STATUS "NOTE: It looks like you have the devtoolset-6 "
+                      "installed in /opt/rh/devtoolset-6, so you probably "
+                      "just need to activate it and re-run the installation. "
+                      "For example: source /opt/rh/devtoolset-6/enable")
     endif()
   endif()
 
   message( FATAL_ERROR "Your C++ compiler does NOT fully support C++11." )
-
 endif()
 
 # Note: build.py always explicitly sets this option, so the default used here
@@ -223,8 +252,7 @@ endif()
 option( USE_PYTHON2 "If on, link to Python 2 instead of 3" ON )
 
 if ( USE_PYTHON2 )
-  set( Python_ADDITIONAL_VERSIONS 2.7 2.6 )
-  find_package( PythonLibs 2.6 REQUIRED )  # 2.6 is ONLY the mininum
+  find_package( PythonLibs 2.7 REQUIRED )
 
   if ( NOT PYTHONLIBS_VERSION_STRING VERSION_LESS "3.0.0" )
     message( FATAL_ERROR
@@ -233,8 +261,8 @@ if ( USE_PYTHON2 )
       "necessary python2 headers & libraries." )
   endif()
 else()
-  set( Python_ADDITIONAL_VERSIONS 3.6 3.5 3.4 3.3 )
-  find_package( PythonLibs 3.3 REQUIRED )  # 3.3 is ONLY the mininum
+  set( Python_ADDITIONAL_VERSIONS 3.6 3.5 3.4 )
+  find_package( PythonLibs 3.4 REQUIRED )  # 3.4 is ONLY the mininum
 endif()
 
 #############################################################################

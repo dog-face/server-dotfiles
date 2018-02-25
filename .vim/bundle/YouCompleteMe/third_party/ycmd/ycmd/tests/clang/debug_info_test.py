@@ -27,8 +27,8 @@ from hamcrest import ( assert_that, contains, empty, has_entries, has_entry,
                        instance_of, matches_regexp )
 
 from ycmd.tests.clang import ( IsolatedYcmd, PathToTestFile, SharedYcmd,
-                               TemporaryClangTestDir, TemporaryClangProject )
-from ycmd.tests.test_utils import BuildRequest
+                               TemporaryClangProject )
+from ycmd.tests.test_utils import BuildRequest, TemporaryTestDir
 
 
 @SharedYcmd
@@ -97,7 +97,7 @@ def DebugInfo_FlagsWhenNoExtraConfAndNoCompilationDatabase_test( app ):
   )
 
 
-@IsolatedYcmd
+@IsolatedYcmd()
 def DebugInfo_FlagsWhenExtraConfNotLoadedAndNoCompilationDatabase_test(
   app ):
 
@@ -122,9 +122,9 @@ def DebugInfo_FlagsWhenExtraConfNotLoadedAndNoCompilationDatabase_test(
   )
 
 
-@IsolatedYcmd
+@IsolatedYcmd()
 def DebugInfo_FlagsWhenNoExtraConfAndCompilationDatabaseLoaded_test( app ):
-  with TemporaryClangTestDir() as tmp_dir:
+  with TemporaryTestDir() as tmp_dir:
     compile_commands = [
       {
         'directory': tmp_dir,
@@ -157,9 +157,9 @@ def DebugInfo_FlagsWhenNoExtraConfAndCompilationDatabaseLoaded_test( app ):
       )
 
 
-@IsolatedYcmd
+@IsolatedYcmd()
 def DebugInfo_FlagsWhenNoExtraConfAndInvalidCompilationDatabase_test( app ):
-  with TemporaryClangTestDir() as tmp_dir:
+  with TemporaryTestDir() as tmp_dir:
     compile_commands = 'garbage'
     with TemporaryClangProject( tmp_dir, compile_commands ):
       request_data = BuildRequest(

@@ -12,7 +12,7 @@ Jedi - an awesome autocompletion/static analysis library for Python
 
 
 *If you have specific questions, please add an issue or ask on* `stackoverflow
-<https://stackoverflow.com>`_ *with the label* ``python-jedi``.
+<https://stackoverflow.com/questions/tagged/python-jedi>`_ *with the label* ``python-jedi``.
 
 
 Jedi is a static analysis tool for Python that can be used in IDEs/editors. Its
@@ -38,13 +38,14 @@ Jedi can currently be used with the following editors/projects:
 - TextMate_ (Not sure if it's actually working)
 - Kate_ version 4.13+ supports it natively, you have to enable it, though. [`proof
   <https://projects.kde.org/projects/kde/applications/kate/repository/show?rev=KDE%2F4.13>`_]
-- Atom_ (autocomplete-python_)
+- Atom_ (autocomplete-python-jedi_)
 - SourceLair_
 - `GNOME Builder`_ (with support for GObject Introspection)
 - `Visual Studio Code`_ (via `Python Extension <https://marketplace.visualstudio.com/items?itemName=donjayamanne.python>`_)
 - Gedit (gedi_)
 - wdb_ - Web Debugger
 - `Eric IDE`_ (Available as a plugin)
+- `Ipython 6.0.0+ <http://ipython.readthedocs.io/en/stable/whatsnew/version6.html>`_
 
 and many more!
 
@@ -122,8 +123,11 @@ The returned objects are very powerful and really all you might need.
 Autocompletion in your REPL (IPython, etc.)
 -------------------------------------------
 
+Starting with Ipython `6.0.0` Jedi is a dependency of IPython. Autocompletion
+in IPython is therefore possible without additional configuration.
+
 It's possible to have Jedi autocompletion in REPL modes - `example video <https://vimeo.com/122332037>`_.
-This means that IPython and others are `supported
+This means that in Python you can enable tab completion in a `REPL
 <https://jedi.readthedocs.org/en/latest/docs/usage.html#tab-completion-in-the-python-shell>`_.
 
 
@@ -203,7 +207,7 @@ Acknowledgements
 .. _TextMate: https://github.com/lawrenceakka/python-jedi.tmbundle
 .. _Kate: http://kate-editor.org
 .. _Atom: https://atom.io/
-.. _autocomplete-python: https://atom.io/packages/autocomplete-python
+.. _autocomplete-python-jedi: https://atom.io/packages/autocomplete-python-jedi
 .. _SourceLair: https://www.sourcelair.com
 .. _GNOME Builder: https://wiki.gnome.org/Apps/Builder
 .. _Visual Studio Code: https://code.visualstudio.com/

@@ -54,7 +54,7 @@ Visual Studio Code:
 
 Atom:
 
-- autocomplete-python_
+- autocomplete-python-jedi_
 
 SourceLair:
 
@@ -82,8 +82,11 @@ and many more!
 
 .. _repl-completion:
 
-Tab completion in the Python Shell
+Tab Completion in the Python Shell
 ----------------------------------
+
+Starting with Ipython `6.0.0` Jedi is a dependency of IPython. Autocompletion
+in IPython is therefore possible without additional configuration.
 
 There are two different options how you can use Jedi autocompletion in
 your Python interpreter. One with your custom ``$HOME/.pythonrc.py`` file
@@ -111,7 +114,7 @@ Using a custom ``$HOME/.pythonrc.py``
 .. _wdb: https://github.com/Kozea/wdb
 .. _TextMate: https://github.com/lawrenceakka/python-jedi.tmbundle
 .. _kate: http://kate-editor.org/
-.. _autocomplete-python: https://atom.io/packages/autocomplete-python
+.. _autocomplete-python-jedi: https://atom.io/packages/autocomplete-python-jedi
 .. _SourceLair: https://www.sourcelair.com
 .. _GNOME Builder: https://wiki.gnome.org/Apps/Builder/
 .. _gedi: https://github.com/isamert/gedi

@@ -25,9 +25,8 @@ from builtins import *  # noqa
 import functools
 import os
 
-from ycmd import handlers
-from ycmd.tests.test_utils import ( ClearCompletionsCache, SetUpApp,
-                                    StopCompleterServer,
+from ycmd.tests.test_utils import ( ClearCompletionsCache, IsolatedApp,
+                                    SetUpApp, StopCompleterServer,
                                     WaitUntilCompleterServerReady )
 
 shared_app = None
@@ -71,21 +70,31 @@ def SharedYcmd( test ):
   return Wrapper
 
 
-def IsolatedYcmd( test ):
+def IsolatedYcmd( custom_options = {} ):
   """Defines a decorator to be attached to tests of this package. This decorator
   passes a unique ycmd application as a parameter. It should be used on tests
   that change the server state in a irreversible way (ex: a semantic subserver
   is stopped or restarted) or expect a clean state (ex: no semantic subserver
-  started, no .ycm_extra_conf.py loaded, etc).
+  started, no .ycm_extra_conf.py loaded, etc). Use the optional parameter
+  |custom_options| to give additional options and/or override the default ones.
 
-  Do NOT attach it to test generators but directly to the yielded tests."""
-  @functools.wraps( test )
-  def Wrapper( *args, **kwargs ):
-    old_server_state = handlers._server_state
-    app = SetUpApp()
-    try:
-      test( app, *args, **kwargs )
-    finally:
-      StopCompleterServer( app, 'python' )
-      handlers._server_state = old_server_state
-  return Wrapper
+  Do NOT attach it to test generators but directly to the yielded tests.
+
+  Example usage:
+
+    from ycmd.tests.python import IsolatedYcmd
+
+    @IsolatedYcmd( { 'python_binary_path': '/some/path' } )
+    def CustomPythonBinaryPath_test( app ):
+      ...
+  """
+  def Decorator( test ):
+    @functools.wraps( test )
+    def Wrapper( *args, **kwargs ):
+      with IsolatedApp( custom_options ) as app:
+        try:
+          test( app, *args, **kwargs )
+        finally:
+          StopCompleterServer( app, 'python' )
+    return Wrapper
+  return Decorator

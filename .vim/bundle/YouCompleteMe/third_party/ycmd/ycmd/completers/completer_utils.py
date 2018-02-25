@@ -167,7 +167,8 @@ def FiletypeCompleterExistsForFiletype( filetype ):
   return os.path.exists( PathToFiletypeCompleterPluginLoader( filetype ) )
 
 
-def FilterAndSortCandidatesWrap( candidates, sort_property, query ):
+def FilterAndSortCandidatesWrap( candidates, sort_property, query,
+                                 max_candidates ):
   from ycm_core import FilterAndSortCandidates
 
   # The c++ interface we use only understands the (*native*) 'str' type (i.e.
@@ -180,14 +181,15 @@ def FilterAndSortCandidatesWrap( candidates, sort_property, query ):
   # C++ layer.
   return FilterAndSortCandidates( candidates,
                                   ToCppStringCompatible( sort_property ),
-                                  ToCppStringCompatible( query ) )
+                                  ToCppStringCompatible( query ),
+                                  max_candidates )
 
 
 TRIGGER_REGEX_PREFIX = 're!'
 
 DEFAULT_FILETYPE_TRIGGERS = {
   'c' : [ '->', '.' ],
-  'objc' : [
+  'objc,objcpp' : [
     '->',
     '.',
     r're!\[[_a-zA-Z]+\w*\s',    # bracketed calls
@@ -208,38 +210,6 @@ DEFAULT_FILETYPE_TRIGGERS = {
 
 PREPARED_DEFAULT_FILETYPE_TRIGGERS = _FiletypeTriggerDictFromSpec(
     DEFAULT_FILETYPE_TRIGGERS )
-
-
-INCLUDE_REGEX = re.compile( '\s*#\s*(?:include|import)\s*("|<)' )
-
-
-def AtIncludeStatementStart( line ):
-  match = INCLUDE_REGEX.match( line )
-  if not match:
-    return False
-  # Check if the whole string matches the regex
-  return match.end() == len( line )
-
-
-def GetIncludeStatementValue( line, check_closing = True ):
-  """Returns include statement value and boolean indicating whether
-     include statement is quoted.
-     If check_closing is True the string is scanned for statement closing
-     character (" or >) and substring between opening and closing characters is
-     returned. The whole string after opening character is returned otherwise"""
-  match = INCLUDE_REGEX.match( line )
-  include_value = None
-  quoted_include = False
-  if match:
-    quoted_include = ( match.group( 1 ) == '"' )
-    if not check_closing:
-      include_value = line[ match.end(): ]
-    else:
-      close_char = '"' if quoted_include else '>'
-      close_char_pos = line.find( close_char, match.end() )
-      if close_char_pos != -1:
-        include_value = line[ match.end() : close_char_pos ]
-  return include_value, quoted_include
 
 
 def GetFileContents( request_data, filename ):

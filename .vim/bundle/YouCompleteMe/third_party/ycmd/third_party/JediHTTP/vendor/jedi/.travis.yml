@@ -8,11 +8,14 @@ python:
   - 3.5
   - 3.6
   - pypy
+  - "3.7-dev"
+
 matrix:
   allow_failures:
     - python: pypy
     - env: TOXENV=cov
     - env: TOXENV=sith
+    - python: 3.7-dev
   include:
     - python: 3.5
       env: TOXENV=cov
@@ -24,7 +27,6 @@ script:
     - tox
 after_script:
     - if [ $TOXENV == "cov" ]; then
-      pip install --quiet --use-mirrors coveralls;
+      pip install --quiet coveralls;
       coveralls;
       fi
-

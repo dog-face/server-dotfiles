@@ -1,4 +1,4 @@
-// Copyright (C) 2011, 2012, 2013 Google Inc.
+// Copyright (C) 2011-2018 ycmd contributors
 //
 // This file is part of ycmd.
 //
@@ -29,7 +29,7 @@ using boost::python::len;
 using boost::python::str;
 using boost::python::extract;
 using boost::python::object;
-typedef boost::python::list pylist;
+using pylist = boost::python::list;
 
 namespace YouCompleteMe {
 
@@ -38,11 +38,11 @@ namespace {
 std::vector< const Candidate * > CandidatesFromObjectList(
   const pylist &candidates,
   const std::string &candidate_property ) {
-  int num_candidates = len( candidates );
+  size_t num_candidates = len( candidates );
   std::vector< std::string > candidate_strings;
   candidate_strings.reserve( num_candidates );
 
-  for ( int i = 0; i < num_candidates; ++i ) {
+  for ( size_t i = 0; i < num_candidates; ++i ) {
     if ( candidate_property.empty() ) {
       candidate_strings.push_back( GetUtf8String( candidates[ i ] ) );
     } else {
@@ -62,44 +62,45 @@ std::vector< const Candidate * > CandidatesFromObjectList(
 boost::python::list FilterAndSortCandidates(
   const boost::python::list &candidates,
   const std::string &candidate_property,
-  const std::string &query ) {
+  const std::string &query,
+  const size_t max_candidates ) {
   pylist filtered_candidates;
 
-  if ( query.empty() )
-    return candidates;
-
-  if ( !IsPrintable( query ) )
+  if ( !IsPrintable( query ) ) {
     return boost::python::list();
+  }
 
-  int num_candidates = len( candidates );
+  size_t num_candidates = len( candidates );
   std::vector< const Candidate * > repository_candidates =
     CandidatesFromObjectList( candidates, candidate_property );
 
-  std::vector< ResultAnd< int > > result_and_objects;
+  std::vector< ResultAnd< size_t > > result_and_objects;
   {
     ReleaseGil unlock;
     Bitset query_bitset = LetterBitsetFromString( query );
     bool query_has_uppercase_letters = HasUppercase( query );
 
-    for ( int i = 0; i < num_candidates; ++i ) {
+    for ( size_t i = 0; i < num_candidates; ++i ) {
       const Candidate *candidate = repository_candidates[ i ];
 
-      if ( !candidate->MatchesQueryBitset( query_bitset ) )
+      if ( candidate->Text().empty() ||
+           !candidate->MatchesQueryBitset( query_bitset ) ) {
         continue;
+      }
 
       Result result = candidate->QueryMatchResult( query,
                                                    query_has_uppercase_letters );
 
       if ( result.IsSubsequence() ) {
-        ResultAnd< int > result_and_object( result, i );
+        ResultAnd< size_t > result_and_object( result, i );
         result_and_objects.push_back( std::move( result_and_object ) );
       }
     }
 
-    std::sort( result_and_objects.begin(), result_and_objects.end() );
+    PartialSort( result_and_objects, max_candidates );
   }
 
-  for ( const ResultAnd< int > &result_and_object : result_and_objects ) {
+  for ( const ResultAnd< size_t > &result_and_object : result_and_objects ) {
     filtered_candidates.append( candidates[ result_and_object.extra_object_ ] );
   }
 
@@ -113,29 +114,34 @@ std::string GetUtf8String( const boost::python::object &value ) {
   // they are UTF-8 encoded when converted to std::string.
   extract< std::string > to_string( value );
 
-  if ( to_string.check() )
+  if ( to_string.check() ) {
     return to_string();
+  }
 #else
   std::string type = extract< std::string >( value.attr( "__class__" )
                                                   .attr( "__name__" ) );
 
-  if ( type == "str" )
+  if ( type == "str" ) {
     return extract< std::string >( value );
+  }
 
-  if ( type == "unicode" )
+  if ( type == "unicode" ) {
     // unicode -> str
     return extract< std::string >( value.attr( "encode" )( "utf8" ) );
+  }
 
   // newstr and newbytes have a __native__ method that convert them
   // respectively to unicode and str.
-  if ( type == "newstr" )
+  if ( type == "newstr" ) {
     // newstr -> unicode -> str
     return extract< std::string >( value.attr( "__native__" )()
                                         .attr( "encode" )( "utf8" ) );
+  }
 
-  if ( type == "newbytes" )
+  if ( type == "newbytes" ) {
     // newbytes -> str
     return extract< std::string >( value.attr( "__native__" )() );
+  }
 #endif
 
   return extract< std::string >( str( value ).encode( "utf8" ) );

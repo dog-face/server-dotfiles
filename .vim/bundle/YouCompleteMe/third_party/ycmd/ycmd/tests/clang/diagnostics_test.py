@@ -31,7 +31,7 @@ from ycmd.tests.test_utils import BuildRequest
 from ycmd.utils import ReadFile
 
 
-@IsolatedYcmd
+@IsolatedYcmd()
 def Diagnostics_ZeroBasedLineAndColumn_test( app ):
   contents = """
 void foo() {
@@ -79,7 +79,7 @@ void foo() {
                   } ) ) )
 
 
-@IsolatedYcmd
+@IsolatedYcmd()
 def Diagnostics_SimpleLocationExtent_test( app ):
   contents = """
 void foo() {
@@ -111,7 +111,7 @@ void foo() {
                   } ) ) )
 
 
-@IsolatedYcmd
+@IsolatedYcmd()
 def Diagnostics_PragmaOnceWarningIgnored_test( app ):
   contents = """
 #pragma once
@@ -134,7 +134,7 @@ struct Foo {
   assert_that( response, empty() )
 
 
-@IsolatedYcmd
+@IsolatedYcmd()
 def Diagnostics_Works_test( app ):
   contents = """
 struct Foo {
@@ -161,7 +161,7 @@ struct Foo {
                has_entry( 'message', contains_string( "expected ';'" ) ) )
 
 
-@IsolatedYcmd
+@IsolatedYcmd()
 def Diagnostics_Multiline_test( app ):
   contents = """
 struct Foo {
@@ -189,7 +189,7 @@ int main() {
                has_entry( 'message', contains_string( "\n" ) ) )
 
 
-@IsolatedYcmd
+@IsolatedYcmd()
 def Diagnostics_FixIt_Available_test( app ):
   contents = ReadFile( PathToTestFile( 'FixIt_Clang_cpp11.cpp' ) )
 
@@ -222,7 +222,7 @@ def Diagnostics_FixIt_Available_test( app ):
   ) )
 
 
-@IsolatedYcmd
+@IsolatedYcmd()
 def Diagnostics_MultipleMissingIncludes_test( app ):
   contents = ReadFile( PathToTestFile( 'multiple_missing_includes.cc' ) )
 
@@ -248,4 +248,116 @@ def Diagnostics_MultipleMissingIncludes_test( app ):
       'text': equal_to( "'second_missing_include' file not found" ),
       'fixit_available': False
     } ),
+  ) )
+
+
+@IsolatedYcmd()
+def Diagnostics_LocationExtent_MissingSemicolon_test( app ):
+  contents = ReadFile( PathToTestFile( 'location_extent.cc' ) )
+
+  event_data = BuildRequest( contents = contents,
+                             event_name = 'FileReadyToParse',
+                             filetype = 'cpp',
+                             compilation_flags = [ '-x', 'c++' ] )
+
+  response = app.post_json( '/event_notification', event_data ).json
+
+  pprint( response )
+
+  assert_that( response, contains(
+    has_entries( {
+      'kind': equal_to( 'ERROR' ),
+      'location': has_entries( {
+        'line_num': 2,
+        'column_num': 9,
+        'filepath': '/foo'
+      } ),
+      'location_extent': has_entries( {
+        'start': has_entries( {
+          'line_num': 2,
+          'column_num': 9,
+          'filepath': '/foo'
+        } ),
+        'end': has_entries( {
+          'line_num': 2,
+          'column_num': 9,
+          'filepath': '/foo'
+        } ),
+      } ),
+      'ranges': empty(),
+      'text': equal_to( "expected ';' at end of declaration list" ),
+      'fixit_available': True
+    } ),
+    has_entries( {
+      'kind': equal_to( 'ERROR' ),
+      'location': has_entries( {
+        'line_num': 5,
+        'column_num': 1,
+        'filepath': '/foo'
+      } ),
+      'location_extent': has_entries( {
+        'start': has_entries( {
+          'line_num': 5,
+          'column_num': 1,
+          'filepath': '/foo'
+        } ),
+        'end': has_entries( {
+          'line_num': 6,
+          'column_num': 11,
+          'filepath': '/foo'
+        } )
+      } ),
+      'ranges': empty(),
+      'text': equal_to( "unknown type name 'multiline_identifier'" ),
+      'fixit_available': False
+    } ),
+    has_entries( {
+      'kind': equal_to( 'ERROR' ),
+      'location': has_entries( {
+        'line_num': 8,
+        'column_num': 7,
+        'filepath': '/foo'
+      } ),
+      'location_extent': has_entries( {
+        'start': has_entries( {
+          'line_num': 8,
+          'column_num': 7,
+          'filepath': '/foo'
+        } ),
+        'end': has_entries( {
+          'line_num': 8,
+          'column_num': 11,
+          'filepath': '/foo'
+        } )
+      } ),
+      'ranges': contains(
+        # FIXME: empty ranges from libclang should be ignored.
+        has_entries( {
+          'start': has_entries( {
+            'line_num': 0,
+            'column_num': 0,
+            'filepath': ''
+          } ),
+          'end': has_entries( {
+            'line_num': 0,
+            'column_num': 0,
+            'filepath': ''
+          } )
+        } ),
+        has_entries( {
+          'start': has_entries( {
+            'line_num': 8,
+            'column_num': 7,
+            'filepath': '/foo'
+          } ),
+          'end': has_entries( {
+            'line_num': 8,
+            'column_num': 11,
+            'filepath': '/foo'
+          } )
+        } )
+      ),
+      'text': equal_to( 'constructor cannot have a return type' ),
+      'fixit_available': False
+    } )
   ) )

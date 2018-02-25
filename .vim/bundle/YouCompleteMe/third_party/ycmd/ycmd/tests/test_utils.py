@@ -36,6 +36,7 @@ import os
 import tempfile
 import time
 import stat
+import shutil
 
 from ycmd import extra_conf_store, handlers, user_options_store
 from ycmd.completers.completer import Completer
@@ -155,18 +156,6 @@ def PatchCompleter( completer, filetype ):
 
 
 @contextlib.contextmanager
-def UserOption( key, value ):
-  try:
-    current_options = dict( user_options_store.GetAll() )
-    user_options = current_options.copy()
-    user_options.update( { key: value } )
-    handlers.UpdateUserOptions( user_options )
-    yield user_options
-  finally:
-    handlers.UpdateUserOptions( current_options )
-
-
-@contextlib.contextmanager
 def CurrentWorkingDirectory( path ):
   old_cwd = GetCurrentDirectory()
   os.chdir( path )
@@ -185,6 +174,15 @@ def TemporaryExecutable( extension = '.exe' ):
     yield executable.name
 
 
+@contextlib.contextmanager
+def TemporarySymlink( source, link ):
+  os.symlink( source, link )
+  try:
+    yield
+  finally:
+    os.remove( link )
+
+
 def SetUpApp( custom_options = {} ):
   bottle.debug( True )
   options = user_options_store.DefaultOptions()
@@ -192,6 +190,17 @@ def SetUpApp( custom_options = {} ):
   handlers.UpdateUserOptions( options )
   extra_conf_store.Reset()
   return TestApp( handlers.app )
+
+
+@contextlib.contextmanager
+def IsolatedApp( custom_options = {} ):
+  old_server_state = handlers._server_state
+  old_extra_conf_store_state = extra_conf_store.Get()
+  try:
+    yield SetUpApp( custom_options )
+  finally:
+    handlers._server_state = old_server_state
+    extra_conf_store.Set( old_extra_conf_store_state )
 
 
 def StartCompleterServer( app, filetype, filepath = '/foo' ):
@@ -297,3 +306,16 @@ def ExpectedFailure( reason, *exception_matchers ):
     return Wrapper
 
   return decorator
+
+
+@contextlib.contextmanager
+def TemporaryTestDir():
+  """Context manager to execute a test with a temporary workspace area. The
+  workspace is deleted upon completion of the test. This is useful particularly
+  for testing project detection (e.g. compilation databases, etc.), by ensuring
+  that the directory is empty and not affected by the user's filesystem."""
+  tmp_dir = tempfile.mkdtemp()
+  try:
+    yield tmp_dir
+  finally:
+    shutil.rmtree( tmp_dir )

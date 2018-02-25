@@ -42,8 +42,7 @@ import argparse
 def RunFlake8():
   print( 'Running flake8' )
   subprocess.check_call( [
-    'flake8',
-    p.join( DIR_OF_THIS_SCRIPT, 'ycmd' )
+    sys.executable, '-m', 'flake8', p.join( DIR_OF_THIS_SCRIPT, 'ycmd' )
   ] )
 
 
@@ -54,22 +53,22 @@ COMPLETERS = {
     'aliases': [ 'c', 'cpp', 'c++', 'objc', 'clang', ]
   },
   'cs': {
-    'build': [ '--omnisharp-completer' ],
+    'build': [ '--cs-completer' ],
     'test': [ '--exclude-dir=ycmd/tests/cs' ],
     'aliases': [ 'omnisharp', 'csharp', 'c#' ]
   },
   'javascript': {
-    'build': [ '--tern-completer' ],
+    'build': [ '--js-completer' ],
     'test': [ '--exclude-dir=ycmd/tests/javascript' ],
     'aliases': [ 'js', 'tern' ]
   },
   'go': {
-    'build': [ '--gocode-completer' ],
+    'build': [ '--go-completer' ],
     'test': [ '--exclude-dir=ycmd/tests/go' ],
     'aliases': [ 'gocode' ]
   },
   'rust': {
-    'build': [ '--racer-completer' ],
+    'build': [ '--rust-completer' ],
     'test': [ '--exclude-dir=ycmd/tests/rust' ],
     'aliases': [ 'racer', 'racerd', ]
   },
@@ -82,6 +81,11 @@ COMPLETERS = {
     'build': [],
     'test': [ '--exclude-dir=ycmd/tests/python' ],
     'aliases': [ 'jedi', 'jedihttp', ]
+  },
+  'java': {
+    'build': [ '--java-completer' ],
+    'test': [ '--exclude-dir=ycmd/tests/java' ],
+    'aliases': [ 'jdt' ],
   },
 }
 
@@ -191,24 +195,31 @@ def BuildYcmdLibs( args ):
 def NoseTests( parsed_args, extra_nosetests_args ):
   # Always passing --with-id to nosetests enables non-surprising usage of
   # its --failed flag.
-  nosetests_args = [ '-v', '--with-id' ]
+  # By default, nose does not include files starting with a underscore in its
+  # report but we want __main__.py to be included. Only ignore files starting
+  # with a dot and setup.py.
+  nosetests_args = [ '-v', '--with-id', '--ignore-files=(^\.|^setup\.py$)' ]
 
   for key in COMPLETERS:
     if key not in parsed_args.completers:
       nosetests_args.extend( COMPLETERS[ key ][ 'test' ] )
 
   if parsed_args.coverage:
-    nosetests_args += [ '--with-coverage',
+    # We need to exclude the ycmd/tests/python/testdata directory since it
+    # contains Python files and its base name starts with "test".
+    nosetests_args += [ '--exclude-dir=ycmd/tests/python/testdata',
+                        '--with-coverage',
                         '--cover-erase',
                         '--cover-package=ycmd',
-                        '--cover-html' ]
+                        '--cover-html',
+                        '--cover-inclusive' ]
 
   if extra_nosetests_args:
     nosetests_args.extend( extra_nosetests_args )
   else:
     nosetests_args.append( p.join( DIR_OF_THIS_SCRIPT, 'ycmd' ) )
 
-  subprocess.check_call( [ 'nosetests' ] + nosetests_args )
+  subprocess.check_call( [ sys.executable, '-m', 'nose' ] + nosetests_args )
 
 
 def Main():
