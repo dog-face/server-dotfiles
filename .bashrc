@@ -87,10 +87,35 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# added by mznco to include git branch in prompt:
+parse_git_branch() {
+        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    }
+PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\$(parse_git_branch)\[\033[00m\]\n$ "
+
+
+# enable color support of ls and also add handy aliases
+alias ls='ls -F --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias lsn="ls -l | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\"%0o \",k);print}'"
+
+# git aliases
+alias gits='git status'
+alias gco='git checkout'
+alias gitbo='git checkout -b'
+alias push='git push -u'
+alias pull='git pull'
+alias gitlink='git branch --set-upstream-to=origin/$(git branch | grep \* | cut -d " " -f 2) $(git branch | grep \* | cut -d " " -f 2)'
+alias gitmm='git checkout master && git pull && git checkout - && git merge master'
+alias gitclean='git checkout master && git pull && git branch --merged | grep -v \* | xargs git branch -d'
+alias gitpurge='git fetch -p && for branch in `git branch -vv | grep ": gone]" | awk "{print $1}"`; do git branch -D $branch; done'
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
