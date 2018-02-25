@@ -106,7 +106,10 @@ alias l='ls -CF'
 alias lsn="ls -l | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\"%0o \",k);print}'"
 
 # git aliases
+alias gita='git add'
 alias gits='git status'
+alias gitc='git commit'
+alias commit='git add . && git status && read && git commit -m'
 alias gco='git checkout'
 alias gitbo='git checkout -b'
 alias push='git push -u'
