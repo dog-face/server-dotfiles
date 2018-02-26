@@ -15,6 +15,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -61,6 +64,19 @@ let g:SimpylFold_docstring_preview=1
 
 " UTF-8 Encoding
 set encoding=utf-8
+
+" Tab controls
+nnoremap tp         :tabprevious<CR>
+nnoremap tn         :tabnext<CR>
+nnoremap <C-t>      :tabnew<CR>
+
+" Start NERDTree
+autocmd vimenter * NERDTree
+" Go to previous (last accessed) window.
+autocmd VimEnter * wincmd p
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+" tt to show/hide nerdtree
+map tt :NERDTreeToggle<CR>
 
 " YouCompleteMe settings
 let g:ycm_autoclose_preview_window_after_completion=1
