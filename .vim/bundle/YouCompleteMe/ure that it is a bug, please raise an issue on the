@@ -1,0 +1,1047 @@
+-- Logs begin at Sun 2018-02-25 10:08:42 EST, end at Sun 2018-02-25 13:15:18 EST. --
+Feb 25 11:02:10 ns556618 sshd[10964]: Disconnected from 24.90.94.22 port 53505 [preauth]
+Feb 25 11:03:01 ns556618 CRON[11011]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:03:01 ns556618 CRON[11012]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:03:01 ns556618 CRON[11011]: pam_unix(cron:session): session closed for user root
+Feb 25 11:04:01 ns556618 CRON[11057]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:04:01 ns556618 CRON[11058]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:04:01 ns556618 CRON[11057]: pam_unix(cron:session): session closed for user root
+Feb 25 11:04:47 ns556618 sshd[11102]: Accepted publickey for root from 24.90.94.22 port 53562 ssh2: RSA SHA256:nPPVYLokp02TYSjjF4FZ9XC8qv+f32ypae7qlm9xNUk
+Feb 25 11:04:47 ns556618 sshd[11102]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Feb 25 11:05:01 ns556618 CRON[11142]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:05:01 ns556618 CRON[11143]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:05:01 ns556618 CRON[11142]: pam_unix(cron:session): session closed for user root
+Feb 25 11:05:17 ns556618 groupadd[11188]: group added to /etc/group: name=mznco, GID=1000
+Feb 25 11:05:17 ns556618 groupadd[11188]: group added to /etc/gshadow: name=mznco
+Feb 25 11:05:17 ns556618 groupadd[11188]: new group: name=mznco, GID=1000
+Feb 25 11:05:17 ns556618 useradd[11192]: new user: name=mznco, UID=1000, GID=1000, home=/home/mznco, shell=/bin/bash
+Feb 25 11:05:26 ns556618 passwd[11199]: [0;1;39mpam_unix(passwd:chauthtok): password changed for mznco[0m
+Feb 25 11:05:32 ns556618 chfn[11200]: changed user 'mznco' information
+Feb 25 11:06:01 ns556618 CRON[11205]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:06:01 ns556618 CRON[11206]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:06:02 ns556618 CRON[11205]: pam_unix(cron:session): session closed for user root
+Feb 25 11:06:22 ns556618 sudo[11250]: [0;1;39m    root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/vim /etc/sudoers[0m
+Feb 25 11:06:22 ns556618 sudo[11250]: pam_unix(sudo:session): session opened for user root by root(uid=0)
+Feb 25 11:06:47 ns556618 sudo[11250]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:06:57 ns556618 su[11253]: Successful su for mznco by root
+Feb 25 11:06:57 ns556618 su[11253]: + /dev/pts/0 root:mznco
+Feb 25 11:06:57 ns556618 su[11253]: pam_unix(su:session): session opened for user mznco by root(uid=0)
+Feb 25 11:07:01 ns556618 CRON[11266]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:07:01 ns556618 CRON[11267]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:07:01 ns556618 CRON[11266]: pam_unix(cron:session): session closed for user root
+Feb 25 11:07:09 ns556618 sudo[11311]: [0;1;31m   mznco : user NOT authorized on host ; TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/bin/ls[0m
+Feb 25 11:07:14 ns556618 su[11253]: pam_unix(su:session): session closed for user mznco
+Feb 25 11:07:41 ns556618 sudo[11314]: [0;1;39m    root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/vim /etc/sudoers[0m
+Feb 25 11:07:41 ns556618 sudo[11314]: pam_unix(sudo:session): session opened for user root by root(uid=0)
+Feb 25 11:08:01 ns556618 CRON[11316]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:08:01 ns556618 CRON[11317]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:08:01 ns556618 CRON[11316]: pam_unix(cron:session): session closed for user root
+Feb 25 11:08:06 ns556618 sudo[11314]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:08:10 ns556618 sudo[11361]: [0;1;39m    root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/bin/su mznco[0m
+Feb 25 11:08:10 ns556618 sudo[11361]: pam_unix(sudo:session): session opened for user root by root(uid=0)
+Feb 25 11:08:10 ns556618 su[11362]: Successful su for mznco by root
+Feb 25 11:08:10 ns556618 su[11362]: + /dev/pts/0 root:mznco
+Feb 25 11:08:10 ns556618 su[11362]: pam_unix(su:session): session opened for user mznco by root(uid=0)
+Feb 25 11:08:14 ns556618 sudo[11374]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/bin/ls[0m
+Feb 25 11:08:14 ns556618 sudo[11374]: pam_unix(sudo:session): session opened for user root by root(uid=0)
+Feb 25 11:08:14 ns556618 sudo[11374]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:08:34 ns556618 sudo[11377]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/bin/vim /etc/sudoers[0m
+Feb 25 11:08:34 ns556618 sudo[11377]: pam_unix(sudo:session): session opened for user root by root(uid=0)
+Feb 25 11:09:01 ns556618 CRON[11379]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:09:01 ns556618 CRON[11380]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:09:01 ns556618 CRON[11379]: pam_unix(cron:session): session closed for user root
+Feb 25 11:09:02 ns556618 sudo[11377]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:09:11 ns556618 sudo[11425]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/bin/cat /etc/sudoers[0m
+Feb 25 11:09:11 ns556618 sudo[11425]: pam_unix(sudo:session): session opened for user root by root(uid=0)
+Feb 25 11:09:11 ns556618 sudo[11425]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:10:01 ns556618 CRON[11428]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:10:01 ns556618 CRON[11429]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:10:01 ns556618 CRON[11428]: pam_unix(cron:session): session closed for user root
+Feb 25 11:11:01 ns556618 CRON[11474]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:11:01 ns556618 CRON[11475]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:11:01 ns556618 CRON[11474]: pam_unix(cron:session): session closed for user root
+Feb 25 11:12:01 ns556618 CRON[11519]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:12:01 ns556618 CRON[11520]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:12:01 ns556618 CRON[11519]: pam_unix(cron:session): session closed for user root
+Feb 25 11:13:01 ns556618 CRON[11571]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:13:01 ns556618 CRON[11572]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:13:01 ns556618 CRON[11571]: pam_unix(cron:session): session closed for user root
+Feb 25 11:13:05 ns556618 sshd[11569]: Connection closed by 24.90.94.22 port 53620 [preauth]
+Feb 25 11:13:41 ns556618 sshd[11622]: Accepted publickey for mznco from 24.90.94.22 port 53628 ssh2: RSA SHA256:nPPVYLokp02TYSjjF4FZ9XC8qv+f32ypae7qlm9xNUk
+Feb 25 11:13:41 ns556618 sshd[11622]: pam_unix(sshd:session): session opened for user mznco by (uid=0)
+Feb 25 11:13:44 ns556618 sshd[11102]: pam_unix(sshd:session): session closed for user root
+Feb 25 11:13:44 ns556618 su[11362]: pam_unix(su:session): session closed for user mznco
+Feb 25 11:13:44 ns556618 sudo[11361]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:14:01 ns556618 CRON[11725]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:14:01 ns556618 CRON[11726]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:14:02 ns556618 CRON[11725]: pam_unix(cron:session): session closed for user root
+Feb 25 11:15:01 ns556618 CRON[11773]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:15:01 ns556618 CRON[11774]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:15:01 ns556618 CRON[11773]: pam_unix(cron:session): session closed for user root
+Feb 25 11:16:01 ns556618 CRON[11818]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:16:01 ns556618 CRON[11819]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:16:01 ns556618 CRON[11818]: pam_unix(cron:session): session closed for user root
+Feb 25 11:17:01 ns556618 CRON[11863]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:17:01 ns556618 CRON[11864]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:17:01 ns556618 CRON[11863]: pam_unix(cron:session): session closed for user root
+Feb 25 11:18:01 ns556618 CRON[11908]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:18:01 ns556618 CRON[11909]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:18:01 ns556618 CRON[11908]: pam_unix(cron:session): session closed for user root
+Feb 25 11:19:01 ns556618 CRON[11953]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:19:01 ns556618 CRON[11954]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:19:01 ns556618 CRON[11953]: pam_unix(cron:session): session closed for user root
+Feb 25 11:20:01 ns556618 CRON[11999]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:20:01 ns556618 CRON[12000]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:20:01 ns556618 CRON[11999]: pam_unix(cron:session): session closed for user root
+Feb 25 11:21:01 ns556618 CRON[12044]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:21:01 ns556618 CRON[12045]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:21:01 ns556618 CRON[12044]: pam_unix(cron:session): session closed for user root
+Feb 25 11:22:01 ns556618 CRON[12090]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:22:01 ns556618 CRON[12091]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:22:02 ns556618 CRON[12090]: pam_unix(cron:session): session closed for user root
+Feb 25 11:22:10 ns556618 sudo[12136]: [0;1;39m   mznco : TTY=pts/1 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/bin/apt-get install git[0m
+Feb 25 11:22:10 ns556618 sudo[12136]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:23:01 ns556618 CRON[12142]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:23:01 ns556618 CRON[12143]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:23:01 ns556618 CRON[12142]: pam_unix(cron:session): session closed for user root
+Feb 25 11:23:06 ns556618 sudo[12136]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:23:07 ns556618 sudo[12187]: [0;1;39m   mznco : TTY=pts/1 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/bin/apt-get install git[0m
+Feb 25 11:23:07 ns556618 sudo[12187]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:23:19 ns556618 sudo[12187]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:23:25 ns556618 sudo[12193]: [0;1;39m   mznco : TTY=pts/1 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/bin/apt-get update[0m
+Feb 25 11:23:25 ns556618 sudo[12193]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:24:01 ns556618 CRON[12199]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:24:01 ns556618 CRON[12200]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:24:01 ns556618 CRON[12199]: pam_unix(cron:session): session closed for user root
+Feb 25 11:24:24 ns556618 sudo[12193]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:24:33 ns556618 sudo[12244]: [0;1;39m   mznco : TTY=pts/1 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/bin/vim /etc/gai.conf[0m
+Feb 25 11:24:33 ns556618 sudo[12244]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:24:59 ns556618 sudo[12244]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:25:01 ns556618 CRON[12246]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:25:01 ns556618 CRON[12247]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:25:01 ns556618 CRON[12246]: pam_unix(cron:session): session closed for user root
+Feb 25 11:25:01 ns556618 sudo[12291]: [0;1;39m   mznco : TTY=pts/1 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/bin/apt-get update[0m
+Feb 25 11:25:01 ns556618 sudo[12291]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:25:06 ns556618 sudo[12291]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:26:01 ns556618 CRON[12511]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:26:01 ns556618 CRON[12512]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:26:01 ns556618 CRON[12511]: pam_unix(cron:session): session closed for user root
+Feb 25 11:27:01 ns556618 CRON[12556]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:27:01 ns556618 CRON[12557]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:27:01 ns556618 CRON[12556]: pam_unix(cron:session): session closed for user root
+Feb 25 11:27:01 ns556618 sudo[12601]: [0;1;39m   mznco : TTY=pts/1 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/bin/apt-get install git[0m
+Feb 25 11:27:01 ns556618 sudo[12601]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:27:10 ns556618 sudo[12601]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:28:01 ns556618 CRON[13575]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:28:01 ns556618 CRON[13576]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:28:01 ns556618 CRON[13575]: pam_unix(cron:session): session closed for user root
+Feb 25 11:29:01 ns556618 CRON[13620]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:29:01 ns556618 CRON[13621]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:29:01 ns556618 CRON[13620]: pam_unix(cron:session): session closed for user root
+Feb 25 11:30:01 ns556618 CRON[13666]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:30:01 ns556618 CRON[13667]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:30:02 ns556618 CRON[13666]: pam_unix(cron:session): session closed for user root
+Feb 25 11:31:01 ns556618 CRON[13716]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:31:01 ns556618 CRON[13717]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:31:01 ns556618 CRON[13716]: pam_unix(cron:session): session closed for user root
+Feb 25 11:32:01 ns556618 CRON[13794]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:32:01 ns556618 CRON[13795]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:32:01 ns556618 CRON[13794]: pam_unix(cron:session): session closed for user root
+Feb 25 11:32:42 ns556618 sshd[11622]: pam_unix(sshd:session): session closed for user mznco
+Feb 25 11:32:48 ns556618 sshd[13852]: Invalid user ls from 24.90.94.22
+Feb 25 11:32:48 ns556618 sshd[13852]: input_userauth_request: invalid user ls [preauth]
+Feb 25 11:32:50 ns556618 sshd[13852]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 25 11:32:50 ns556618 sshd[13852]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=24.90.94.22[0m
+Feb 25 11:32:51 ns556618 sshd[13852]: Failed password for invalid user ls from 24.90.94.22 port 53845 ssh2
+Feb 25 11:32:52 ns556618 sshd[13852]: [0;1;31merror: Received disconnect from 24.90.94.22 port 53845:13: Unable to authenticate [preauth][0m
+Feb 25 11:32:52 ns556618 sshd[13852]: Disconnected from 24.90.94.22 port 53845 [preauth]
+Feb 25 11:32:58 ns556618 sshd[13854]: Accepted publickey for mznco from 24.90.94.22 port 53847 ssh2: RSA SHA256:nPPVYLokp02TYSjjF4FZ9XC8qv+f32ypae7qlm9xNUk
+Feb 25 11:32:58 ns556618 sshd[13854]: pam_unix(sshd:session): session opened for user mznco by (uid=0)
+Feb 25 11:33:01 ns556618 CRON[13899]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:33:01 ns556618 CRON[13900]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:33:01 ns556618 CRON[13899]: pam_unix(cron:session): session closed for user root
+Feb 25 11:34:01 ns556618 CRON[13961]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:34:01 ns556618 CRON[13962]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:34:01 ns556618 CRON[13961]: pam_unix(cron:session): session closed for user root
+Feb 25 11:35:01 ns556618 CRON[14025]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:35:01 ns556618 CRON[14026]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:35:01 ns556618 CRON[14025]: pam_unix(cron:session): session closed for user root
+Feb 25 11:35:01 ns556618 sudo[14024]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/bin/apt-get install nano[0m
+Feb 25 11:35:01 ns556618 sudo[14024]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:35:08 ns556618 sudo[14024]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:36:01 ns556618 CRON[14346]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:36:01 ns556618 CRON[14347]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:36:01 ns556618 CRON[14346]: pam_unix(cron:session): session closed for user root
+Feb 25 11:36:28 ns556618 sshd[13854]: pam_unix(sshd:session): session closed for user mznco
+Feb 25 11:36:32 ns556618 sshd[14394]: Accepted publickey for mznco from 24.90.94.22 port 53871 ssh2: RSA SHA256:nPPVYLokp02TYSjjF4FZ9XC8qv+f32ypae7qlm9xNUk
+Feb 25 11:36:32 ns556618 sshd[14394]: pam_unix(sshd:session): session opened for user mznco by (uid=0)
+Feb 25 11:37:01 ns556618 CRON[14440]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:37:01 ns556618 CRON[14441]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:37:01 ns556618 CRON[14440]: pam_unix(cron:session): session closed for user root
+Feb 25 11:37:44 ns556618 sudo[14485]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/bin/apt-get install gls[0m
+Feb 25 11:37:44 ns556618 sudo[14485]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:37:44 ns556618 sudo[14485]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:37:58 ns556618 sudo[14492]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/bin/apt-get install coreutils[0m
+Feb 25 11:37:58 ns556618 sudo[14492]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:37:59 ns556618 sudo[14492]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:38:01 ns556618 CRON[14499]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:38:01 ns556618 CRON[14500]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:38:02 ns556618 CRON[14499]: pam_unix(cron:session): session closed for user root
+Feb 25 11:38:03 ns556618 sudo[14544]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/bin/apt-get install gnu-coreutils[0m
+Feb 25 11:38:03 ns556618 sudo[14544]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:38:03 ns556618 sudo[14544]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:39:02 ns556618 CRON[14556]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:39:02 ns556618 CRON[14557]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:39:02 ns556618 CRON[14556]: pam_unix(cron:session): session closed for user root
+Feb 25 11:39:07 ns556618 named[15891]: validating ftp.gnu.org/A: no valid signature found
+Feb 25 11:39:07 ns556618 named[15891]: validating ftp.gnu.org/AAAA: no valid signature found
+Feb 25 11:40:01 ns556618 CRON[14626]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:40:01 ns556618 CRON[14627]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:40:01 ns556618 CRON[14626]: pam_unix(cron:session): session closed for user root
+Feb 25 11:41:00 ns556618 sudo[14836]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/coreutils-8.29 ; USER=root ; COMMAND=/usr/bin/apt-get install gcc[0m
+Feb 25 11:41:00 ns556618 sudo[14836]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:41:01 ns556618 CRON[14841]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:41:01 ns556618 CRON[14842]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:41:01 ns556618 CRON[14841]: pam_unix(cron:session): session closed for user root
+Feb 25 11:41:35 ns556618 sudo[14836]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:42:01 ns556618 CRON[22771]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:42:01 ns556618 CRON[22772]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:42:01 ns556618 CRON[22771]: pam_unix(cron:session): session closed for user root
+Feb 25 11:43:01 ns556618 CRON[30594]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:43:01 ns556618 CRON[30596]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:43:01 ns556618 CRON[30594]: pam_unix(cron:session): session closed for user root
+Feb 25 11:44:01 ns556618 CRON[947]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:44:01 ns556618 CRON[948]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:44:01 ns556618 CRON[947]: pam_unix(cron:session): session closed for user root
+Feb 25 11:45:01 ns556618 CRON[1002]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:45:01 ns556618 CRON[1003]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:45:01 ns556618 CRON[1002]: pam_unix(cron:session): session closed for user root
+Feb 25 11:46:01 ns556618 CRON[1047]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:46:01 ns556618 CRON[1048]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:46:02 ns556618 CRON[1047]: pam_unix(cron:session): session closed for user root
+Feb 25 11:47:01 ns556618 CRON[1092]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:47:01 ns556618 CRON[1093]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:47:01 ns556618 CRON[1092]: pam_unix(cron:session): session closed for user root
+Feb 25 11:48:01 ns556618 CRON[1138]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:48:01 ns556618 CRON[1139]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:48:01 ns556618 CRON[1138]: pam_unix(cron:session): session closed for user root
+Feb 25 11:48:09 ns556618 sudo[1188]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/coreutils-8.29 ; USER=root ; COMMAND=/usr/bin/apt-get install make[0m
+Feb 25 11:48:09 ns556618 sudo[1188]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:48:13 ns556618 sudo[1188]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:49:01 ns556618 CRON[5241]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:49:01 ns556618 CRON[5242]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:49:01 ns556618 CRON[5241]: pam_unix(cron:session): session closed for user root
+Feb 25 11:50:01 ns556618 CRON[8743]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:50:01 ns556618 CRON[8744]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:50:01 ns556618 CRON[8743]: pam_unix(cron:session): session closed for user root
+Feb 25 11:50:16 ns556618 sudo[10279]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/coreutils-8.29 ; USER=root ; COMMAND=/usr/bin/make install[0m
+Feb 25 11:50:16 ns556618 sudo[10279]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 11:50:17 ns556618 sudo[10279]: pam_unix(sudo:session): session closed for user root
+Feb 25 11:51:01 ns556618 CRON[11071]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:51:01 ns556618 CRON[11072]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:51:01 ns556618 CRON[11071]: pam_unix(cron:session): session closed for user root
+Feb 25 11:52:01 ns556618 CRON[11179]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:52:01 ns556618 CRON[11180]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:52:01 ns556618 CRON[11179]: pam_unix(cron:session): session closed for user root
+Feb 25 11:53:01 ns556618 CRON[11267]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:53:01 ns556618 CRON[11268]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:53:01 ns556618 CRON[11267]: pam_unix(cron:session): session closed for user root
+Feb 25 11:54:01 ns556618 CRON[11320]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:54:01 ns556618 CRON[11321]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:54:02 ns556618 CRON[11320]: pam_unix(cron:session): session closed for user root
+Feb 25 11:55:01 ns556618 CRON[11392]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:55:01 ns556618 CRON[11393]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:55:01 ns556618 CRON[11392]: pam_unix(cron:session): session closed for user root
+Feb 25 11:56:01 ns556618 CRON[11452]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:56:01 ns556618 CRON[11453]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:56:01 ns556618 CRON[11452]: pam_unix(cron:session): session closed for user root
+Feb 25 11:57:01 ns556618 CRON[11568]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:57:01 ns556618 CRON[11569]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:57:01 ns556618 CRON[11571]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:57:01 ns556618 CRON[11570]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Feb 25 11:57:01 ns556618 CRON[11569]: pam_unix(cron:session): session closed for user root
+Feb 25 11:57:01 ns556618 CRON[11568]: pam_unix(cron:session): session closed for user root
+Feb 25 11:57:59 ns556618 sshd[11623]: Accepted publickey for mznco from 144.217.68.180 port 49718 ssh2: RSA SHA256:Lt6uUAahb5mq2dPBoUiOrh8ef6vZS4l/0elORwWiZ9s
+Feb 25 11:57:59 ns556618 sshd[11623]: pam_unix(sshd:session): session opened for user mznco by (uid=0)
+Feb 25 11:58:00 ns556618 sshd[11650]: Received disconnect from 144.217.68.180 port 49718:11: disconnected by user
+Feb 25 11:58:00 ns556618 sshd[11650]: Disconnected from 144.217.68.180 port 49718
+Feb 25 11:58:00 ns556618 sshd[11623]: pam_unix(sshd:session): session closed for user mznco
+Feb 25 11:58:01 ns556618 CRON[11666]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:58:01 ns556618 CRON[11667]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:58:01 ns556618 CRON[11666]: pam_unix(cron:session): session closed for user root
+Feb 25 11:59:01 ns556618 CRON[11711]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 11:59:01 ns556618 CRON[11712]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 11:59:01 ns556618 CRON[11711]: pam_unix(cron:session): session closed for user root
+Feb 25 12:00:01 ns556618 CRON[11757]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:00:01 ns556618 CRON[11758]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:00:01 ns556618 CRON[11757]: pam_unix(cron:session): session closed for user root
+Feb 25 12:00:13 ns556618 sshd[11802]: Accepted publickey for mznco from 144.217.68.180 port 49850 ssh2: RSA SHA256:Lt6uUAahb5mq2dPBoUiOrh8ef6vZS4l/0elORwWiZ9s
+Feb 25 12:00:13 ns556618 sshd[11802]: pam_unix(sshd:session): session opened for user mznco by (uid=0)
+Feb 25 12:00:14 ns556618 sshd[11829]: Received disconnect from 144.217.68.180 port 49850:11: disconnected by user
+Feb 25 12:00:14 ns556618 sshd[11829]: Disconnected from 144.217.68.180 port 49850
+Feb 25 12:00:14 ns556618 sshd[11802]: pam_unix(sshd:session): session closed for user mznco
+Feb 25 12:01:01 ns556618 CRON[11845]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:01:01 ns556618 CRON[11846]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:01:01 ns556618 CRON[11845]: pam_unix(cron:session): session closed for user root
+Feb 25 12:01:52 ns556618 sshd[11890]: Accepted publickey for mznco from 144.217.68.180 port 49945 ssh2: RSA SHA256:Lt6uUAahb5mq2dPBoUiOrh8ef6vZS4l/0elORwWiZ9s
+Feb 25 12:01:52 ns556618 sshd[11890]: pam_unix(sshd:session): session opened for user mznco by (uid=0)
+Feb 25 12:01:56 ns556618 sshd[11917]: Received disconnect from 144.217.68.180 port 49945:11: disconnected by user
+Feb 25 12:01:56 ns556618 sshd[11917]: Disconnected from 144.217.68.180 port 49945
+Feb 25 12:01:56 ns556618 sshd[11890]: pam_unix(sshd:session): session closed for user mznco
+Feb 25 12:02:01 ns556618 CRON[11920]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:02:01 ns556618 CRON[11921]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:02:02 ns556618 CRON[11920]: pam_unix(cron:session): session closed for user root
+Feb 25 12:02:18 ns556618 sshd[11965]: Accepted password for mznco from 144.217.68.180 port 49963 ssh2
+Feb 25 12:02:18 ns556618 sshd[11965]: pam_unix(sshd:session): session opened for user mznco by (uid=0)
+Feb 25 12:02:29 ns556618 sshd[11992]: Received disconnect from 144.217.68.180 port 49963:11: disconnected by user
+Feb 25 12:02:29 ns556618 sshd[11992]: Disconnected from 144.217.68.180 port 49963
+Feb 25 12:02:29 ns556618 sshd[11965]: pam_unix(sshd:session): session closed for user mznco
+Feb 25 12:03:01 ns556618 CRON[11995]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:03:01 ns556618 CRON[11996]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:03:01 ns556618 CRON[11995]: pam_unix(cron:session): session closed for user root
+Feb 25 12:04:01 ns556618 CRON[12040]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:04:01 ns556618 CRON[12041]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:04:01 ns556618 CRON[12040]: pam_unix(cron:session): session closed for user root
+Feb 25 12:04:16 ns556618 sshd[12086]: Invalid user admin from 183.136.188.116
+Feb 25 12:04:16 ns556618 sshd[12086]: input_userauth_request: invalid user admin [preauth]
+Feb 25 12:04:16 ns556618 sshd[12086]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 25 12:04:16 ns556618 sshd[12086]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=183.136.188.116[0m
+Feb 25 12:04:17 ns556618 sshd[12086]: Failed password for invalid user admin from 183.136.188.116 port 57381 ssh2
+Feb 25 12:04:19 ns556618 sshd[12086]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 25 12:04:21 ns556618 sshd[12086]: Failed password for invalid user admin from 183.136.188.116 port 57381 ssh2
+Feb 25 12:04:21 ns556618 sshd[12086]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 25 12:04:23 ns556618 sshd[12086]: Failed password for invalid user admin from 183.136.188.116 port 57381 ssh2
+Feb 25 12:04:24 ns556618 sshd[12086]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 25 12:04:26 ns556618 sshd[12086]: Failed password for invalid user admin from 183.136.188.116 port 57381 ssh2
+Feb 25 12:04:26 ns556618 sshd[12086]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 25 12:04:28 ns556618 sshd[12086]: Failed password for invalid user admin from 183.136.188.116 port 57381 ssh2
+Feb 25 12:04:29 ns556618 sshd[12086]: [0;1;39mpam_unix(sshd:auth): check pass; user unknown[0m
+Feb 25 12:04:31 ns556618 sshd[12086]: Failed password for invalid user admin from 183.136.188.116 port 57381 ssh2
+Feb 25 12:04:31 ns556618 sshd[12086]: [0;1;31merror: maximum authentication attempts exceeded for invalid user admin from 183.136.188.116 port 57381 ssh2 [preauth][0m
+Feb 25 12:04:31 ns556618 sshd[12086]: Disconnecting: Too many authentication failures [preauth]
+Feb 25 12:04:31 ns556618 sshd[12086]: [0;1;39mPAM 5 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=183.136.188.116[0m
+Feb 25 12:04:31 ns556618 sshd[12086]: [0;1;31mPAM service(sshd) ignoring max retries; 6 > 3[0m
+Feb 25 12:05:01 ns556618 CRON[12088]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:05:01 ns556618 CRON[12089]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:05:01 ns556618 CRON[12088]: pam_unix(cron:session): session closed for user root
+Feb 25 12:06:01 ns556618 CRON[12133]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:06:01 ns556618 CRON[12134]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:06:01 ns556618 CRON[12133]: pam_unix(cron:session): session closed for user root
+Feb 25 12:07:01 ns556618 CRON[12178]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:07:01 ns556618 CRON[12179]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:07:01 ns556618 CRON[12178]: pam_unix(cron:session): session closed for user root
+Feb 25 12:08:01 ns556618 CRON[12223]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:08:01 ns556618 CRON[12224]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:08:01 ns556618 CRON[12223]: pam_unix(cron:session): session closed for user root
+Feb 25 12:09:01 ns556618 CRON[12268]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:09:01 ns556618 CRON[12269]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:09:01 ns556618 CRON[12268]: pam_unix(cron:session): session closed for user root
+Feb 25 12:10:01 ns556618 CRON[12322]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:10:01 ns556618 CRON[12323]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:10:02 ns556618 CRON[12322]: pam_unix(cron:session): session closed for user root
+Feb 25 12:11:01 ns556618 CRON[12367]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:11:01 ns556618 CRON[12368]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:11:01 ns556618 CRON[12367]: pam_unix(cron:session): session closed for user root
+Feb 25 12:12:01 ns556618 CRON[12412]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:12:01 ns556618 CRON[12413]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:12:01 ns556618 CRON[12412]: pam_unix(cron:session): session closed for user root
+Feb 25 12:12:49 ns556618 sshd[12457]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=24.217.34.250  user=root[0m
+Feb 25 12:12:51 ns556618 sshd[12457]: Failed password for root from 24.217.34.250 port 33617 ssh2
+Feb 25 12:12:53 ns556618 sshd[12457]: Failed password for root from 24.217.34.250 port 33617 ssh2
+Feb 25 12:12:55 ns556618 sshd[12457]: Failed password for root from 24.217.34.250 port 33617 ssh2
+Feb 25 12:12:57 ns556618 sshd[12457]: Failed password for root from 24.217.34.250 port 33617 ssh2
+Feb 25 12:13:00 ns556618 sshd[12457]: Failed password for root from 24.217.34.250 port 33617 ssh2
+Feb 25 12:13:01 ns556618 CRON[12459]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:13:01 ns556618 CRON[12460]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:13:01 ns556618 CRON[12459]: pam_unix(cron:session): session closed for user root
+Feb 25 12:13:01 ns556618 sshd[12457]: Failed password for root from 24.217.34.250 port 33617 ssh2
+Feb 25 12:13:01 ns556618 sshd[12457]: [0;1;31merror: maximum authentication attempts exceeded for root from 24.217.34.250 port 33617 ssh2 [preauth][0m
+Feb 25 12:13:01 ns556618 sshd[12457]: Disconnecting: Too many authentication failures [preauth]
+Feb 25 12:13:01 ns556618 sshd[12457]: [0;1;39mPAM 5 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=24.217.34.250  user=root[0m
+Feb 25 12:13:01 ns556618 sshd[12457]: [0;1;31mPAM service(sshd) ignoring max retries; 6 > 3[0m
+Feb 25 12:14:01 ns556618 CRON[12512]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:14:01 ns556618 CRON[12513]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:14:01 ns556618 CRON[12512]: pam_unix(cron:session): session closed for user root
+Feb 25 12:15:01 ns556618 CRON[12561]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:15:01 ns556618 CRON[12562]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:15:01 ns556618 CRON[12561]: pam_unix(cron:session): session closed for user root
+Feb 25 12:16:01 ns556618 CRON[12607]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:16:01 ns556618 CRON[12608]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:16:01 ns556618 CRON[12607]: pam_unix(cron:session): session closed for user root
+Feb 25 12:17:01 ns556618 CRON[12652]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:17:01 ns556618 CRON[12653]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:17:02 ns556618 CRON[12652]: pam_unix(cron:session): session closed for user root
+Feb 25 12:18:01 ns556618 CRON[12697]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:18:01 ns556618 CRON[12698]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:18:01 ns556618 CRON[12697]: pam_unix(cron:session): session closed for user root
+Feb 25 12:19:01 ns556618 CRON[12742]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:19:01 ns556618 CRON[12743]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:19:01 ns556618 CRON[12742]: pam_unix(cron:session): session closed for user root
+Feb 25 12:20:01 ns556618 CRON[12787]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:20:01 ns556618 CRON[12788]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:20:01 ns556618 CRON[12787]: pam_unix(cron:session): session closed for user root
+Feb 25 12:21:01 ns556618 CRON[12832]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:21:01 ns556618 CRON[12833]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:21:01 ns556618 CRON[12832]: pam_unix(cron:session): session closed for user root
+Feb 25 12:22:01 ns556618 CRON[12877]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:22:01 ns556618 CRON[12878]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:22:01 ns556618 CRON[12877]: pam_unix(cron:session): session closed for user root
+Feb 25 12:22:20 ns556618 sshd[12923]: Accepted password for mznco from 144.217.68.180 port 54392 ssh2
+Feb 25 12:22:20 ns556618 sshd[12923]: pam_unix(sshd:session): session opened for user mznco by (uid=0)
+Feb 25 12:22:20 ns556618 sshd[13013]: Received disconnect from 144.217.68.180 port 54392:11: disconnected by user
+Feb 25 12:22:20 ns556618 sshd[13013]: Disconnected from 144.217.68.180 port 54392
+Feb 25 12:22:20 ns556618 sshd[12923]: pam_unix(sshd:session): session closed for user mznco
+Feb 25 12:22:38 ns556618 sshd[13016]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=170.244.103.250  user=root[0m
+Feb 25 12:22:40 ns556618 sshd[13016]: Failed password for root from 170.244.103.250 port 44214 ssh2
+Feb 25 12:22:43 ns556618 sshd[13016]: Failed password for root from 170.244.103.250 port 44214 ssh2
+Feb 25 12:22:46 ns556618 sshd[13016]: Failed password for root from 170.244.103.250 port 44214 ssh2
+Feb 25 12:22:48 ns556618 sshd[13016]: Failed password for root from 170.244.103.250 port 44214 ssh2
+Feb 25 12:22:53 ns556618 sshd[13016]: Failed password for root from 170.244.103.250 port 44214 ssh2
+Feb 25 12:22:56 ns556618 sshd[13016]: Failed password for root from 170.244.103.250 port 44214 ssh2
+Feb 25 12:22:56 ns556618 sshd[13016]: [0;1;31merror: maximum authentication attempts exceeded for root from 170.244.103.250 port 44214 ssh2 [preauth][0m
+Feb 25 12:22:56 ns556618 sshd[13016]: Disconnecting: Too many authentication failures [preauth]
+Feb 25 12:22:56 ns556618 sshd[13016]: [0;1;39mPAM 5 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=170.244.103.250  user=root[0m
+Feb 25 12:22:56 ns556618 sshd[13016]: [0;1;31mPAM service(sshd) ignoring max retries; 6 > 3[0m
+Feb 25 12:23:01 ns556618 CRON[13029]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:23:01 ns556618 CRON[13030]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:23:01 ns556618 CRON[13029]: pam_unix(cron:session): session closed for user root
+Feb 25 12:23:17 ns556618 sshd[13074]: Accepted password for mznco from 144.217.68.180 port 54443 ssh2
+Feb 25 12:23:17 ns556618 sshd[13074]: pam_unix(sshd:session): session opened for user mznco by (uid=0)
+Feb 25 12:24:01 ns556618 CRON[13113]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:24:01 ns556618 CRON[13114]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:24:01 ns556618 CRON[13113]: pam_unix(cron:session): session closed for user root
+Feb 25 12:25:01 ns556618 CRON[13179]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:25:01 ns556618 CRON[13180]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:25:02 ns556618 CRON[13179]: pam_unix(cron:session): session closed for user root
+Feb 25 12:25:09 ns556618 sshd[13231]: [0;1;39mpam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=118.100.29.90  user=root[0m
+Feb 25 12:25:11 ns556618 sshd[13231]: Failed password for root from 118.100.29.90 port 41097 ssh2
+Feb 25 12:25:14 ns556618 sshd[13231]: Failed password for root from 118.100.29.90 port 41097 ssh2
+Feb 25 12:25:16 ns556618 sshd[13231]: Failed password for root from 118.100.29.90 port 41097 ssh2
+Feb 25 12:25:19 ns556618 sshd[13231]: Failed password for root from 118.100.29.90 port 41097 ssh2
+Feb 25 12:25:21 ns556618 sshd[13231]: Failed password for root from 118.100.29.90 port 41097 ssh2
+Feb 25 12:25:24 ns556618 sshd[13231]: Failed password for root from 118.100.29.90 port 41097 ssh2
+Feb 25 12:25:24 ns556618 sshd[13231]: [0;1;31merror: maximum authentication attempts exceeded for root from 118.100.29.90 port 41097 ssh2 [preauth][0m
+Feb 25 12:25:24 ns556618 sshd[13231]: Disconnecting: Too many authentication failures [preauth]
+Feb 25 12:25:24 ns556618 sshd[13231]: [0;1;39mPAM 5 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=118.100.29.90  user=root[0m
+Feb 25 12:25:24 ns556618 sshd[13231]: [0;1;31mPAM service(sshd) ignoring max retries; 6 > 3[0m
+Feb 25 12:26:01 ns556618 CRON[13252]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:26:01 ns556618 CRON[13253]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:26:01 ns556618 CRON[13252]: pam_unix(cron:session): session closed for user root
+Feb 25 12:27:01 ns556618 CRON[13326]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:27:01 ns556618 CRON[13327]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:27:01 ns556618 CRON[13326]: pam_unix(cron:session): session closed for user root
+Feb 25 12:28:01 ns556618 CRON[13384]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:28:01 ns556618 CRON[13385]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:28:01 ns556618 CRON[13384]: pam_unix(cron:session): session closed for user root
+Feb 25 12:29:01 ns556618 CRON[14901]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:29:01 ns556618 CRON[14902]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:29:01 ns556618 CRON[14901]: pam_unix(cron:session): session closed for user root
+Feb 25 12:30:01 ns556618 CRON[14998]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:30:01 ns556618 CRON[14999]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:30:01 ns556618 CRON[14998]: pam_unix(cron:session): session closed for user root
+Feb 25 12:31:01 ns556618 CRON[15122]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:31:01 ns556618 CRON[15123]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:31:01 ns556618 CRON[15122]: pam_unix(cron:session): session closed for user root
+Feb 25 12:32:01 ns556618 CRON[15259]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:32:01 ns556618 CRON[15260]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:32:01 ns556618 CRON[15259]: pam_unix(cron:session): session closed for user root
+Feb 25 12:33:01 ns556618 CRON[15492]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:33:01 ns556618 CRON[15493]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:33:01 ns556618 CRON[15492]: pam_unix(cron:session): session closed for user root
+Feb 25 12:33:33 ns556618 sshd[13101]: Received disconnect from 144.217.68.180 port 54443:11: disconnected by user
+Feb 25 12:33:33 ns556618 sshd[13101]: Disconnected from 144.217.68.180 port 54443
+Feb 25 12:33:33 ns556618 sshd[13074]: pam_unix(sshd:session): session closed for user mznco
+Feb 25 12:33:41 ns556618 sudo[15537]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles ; USER=root ; COMMAND=/usr/bin/apt-get install nethogs[0m
+Feb 25 12:33:41 ns556618 sudo[15537]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:33:46 ns556618 sudo[15537]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:33:55 ns556618 sudo[16036]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles ; USER=root ; COMMAND=/usr/bin/apt-get install apache2[0m
+Feb 25 12:33:55 ns556618 sudo[16036]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:34:01 ns556618 CRON[16153]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:34:01 ns556618 CRON[16154]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:34:02 ns556618 CRON[16153]: pam_unix(cron:session): session closed for user root
+Feb 25 12:34:03 ns556618 systemd[1]: Reloading.
+Feb 25 12:34:12 ns556618 systemd[1]: Reloading.
+Feb 25 12:34:12 ns556618 systemd[1]: Reloading.
+Feb 25 12:34:12 ns556618 systemd[1]: Reloading.
+Feb 25 12:34:13 ns556618 systemd[1]: Starting LSB: Apache2 web server...
+-- Subject: Unit apache2.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit apache2.service has begun starting up.
+Feb 25 12:34:13 ns556618 apache2[16872]:  * Starting Apache httpd web server apache2
+Feb 25 12:34:14 ns556618 apache2[16872]:  *
+Feb 25 12:34:14 ns556618 systemd[1]: Started LSB: Apache2 web server.
+-- Subject: Unit apache2.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit apache2.service has finished starting up.
+-- 
+-- The start-up result is done.
+Feb 25 12:34:14 ns556618 groupadd[16971]: group added to /etc/group: name=ssl-cert, GID=113
+Feb 25 12:34:14 ns556618 groupadd[16971]: group added to /etc/gshadow: name=ssl-cert
+Feb 25 12:34:14 ns556618 groupadd[16971]: new group: name=ssl-cert, GID=113
+Feb 25 12:34:15 ns556618 systemd[1]: Reloading.
+Feb 25 12:34:17 ns556618 sudo[16036]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:34:25 ns556618 sudo[17045]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles ; USER=root ; COMMAND=/usr/sbin/adduser www[0m
+Feb 25 12:34:25 ns556618 sudo[17045]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:34:25 ns556618 groupadd[17047]: group added to /etc/group: name=www, GID=1001
+Feb 25 12:34:25 ns556618 groupadd[17047]: group added to /etc/gshadow: name=www
+Feb 25 12:34:25 ns556618 groupadd[17047]: new group: name=www, GID=1001
+Feb 25 12:34:25 ns556618 useradd[17051]: new user: name=www, UID=1001, GID=1001, home=/home/www, shell=/bin/bash
+Feb 25 12:35:01 ns556618 CRON[17060]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:35:01 ns556618 CRON[17061]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:35:01 ns556618 CRON[17060]: pam_unix(cron:session): session closed for user root
+Feb 25 12:35:04 ns556618 passwd[17059]: [0;1;39mpam_unix(passwd:chauthtok): password changed for www[0m
+Feb 25 12:35:13 ns556618 chfn[17105]: changed user 'www' information
+Feb 25 12:35:15 ns556618 sudo[17045]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:36:01 ns556618 CRON[17141]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:36:01 ns556618 CRON[17142]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:36:01 ns556618 CRON[17141]: pam_unix(cron:session): session closed for user root
+Feb 25 12:36:26 ns556618 sudo[17212]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/local/bin/users[0m
+Feb 25 12:36:27 ns556618 sudo[17212]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:36:27 ns556618 sudo[17212]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:37:01 ns556618 CRON[17229]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:37:01 ns556618 CRON[17230]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:37:01 ns556618 CRON[17229]: pam_unix(cron:session): session closed for user root
+Feb 25 12:37:12 ns556618 sudo[17274]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/sbin/userdel www[0m
+Feb 25 12:37:12 ns556618 sudo[17274]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:37:13 ns556618 userdel[17275]: delete user 'www'
+Feb 25 12:37:13 ns556618 userdel[17275]: removed group 'www' owned by 'www'
+Feb 25 12:37:13 ns556618 userdel[17275]: removed shadow group 'www' owned by 'www'
+Feb 25 12:37:13 ns556618 sudo[17274]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:37:20 ns556618 sudo[17283]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/sbin/adduser www-data[0m
+Feb 25 12:37:20 ns556618 sudo[17283]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:37:21 ns556618 sudo[17283]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:37:24 ns556618 sudo[17288]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/sbin/adduser www[0m
+Feb 25 12:37:24 ns556618 sudo[17288]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:37:24 ns556618 groupadd[17290]: group added to /etc/group: name=www, GID=1001
+Feb 25 12:37:24 ns556618 groupadd[17290]: group added to /etc/gshadow: name=www
+Feb 25 12:37:24 ns556618 groupadd[17290]: new group: name=www, GID=1001
+Feb 25 12:37:24 ns556618 useradd[17294]: new user: name=www, UID=1001, GID=1001, home=/home/www, shell=/bin/bash
+Feb 25 12:37:35 ns556618 passwd[17299]: [0;1;39mpam_unix(passwd:chauthtok): password changed for www[0m
+Feb 25 12:37:41 ns556618 chfn[17300]: changed user 'www' information
+Feb 25 12:37:42 ns556618 sudo[17288]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:37:55 ns556618 sudo[17311]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/sbin/adduser plex[0m
+Feb 25 12:37:55 ns556618 sudo[17311]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:37:55 ns556618 groupadd[17313]: group added to /etc/group: name=plex, GID=1002
+Feb 25 12:37:55 ns556618 groupadd[17313]: group added to /etc/gshadow: name=plex
+Feb 25 12:37:55 ns556618 groupadd[17313]: new group: name=plex, GID=1002
+Feb 25 12:37:55 ns556618 useradd[17317]: new user: name=plex, UID=1002, GID=1002, home=/home/plex, shell=/bin/bash
+Feb 25 12:37:59 ns556618 passwd[17324]: [0;1;39mpam_unix(passwd:chauthtok): password changed for plex[0m
+Feb 25 12:38:00 ns556618 chfn[17325]: changed user 'plex' information
+Feb 25 12:38:01 ns556618 sudo[17311]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:38:01 ns556618 CRON[17332]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:38:01 ns556618 CRON[17333]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:38:01 ns556618 CRON[17332]: pam_unix(cron:session): session closed for user root
+Feb 25 12:38:08 ns556618 sudo[17377]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/sbin/adduser deluge[0m
+Feb 25 12:38:08 ns556618 sudo[17377]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:38:08 ns556618 groupadd[17379]: group added to /etc/group: name=deluge, GID=1003
+Feb 25 12:38:08 ns556618 groupadd[17379]: group added to /etc/gshadow: name=deluge
+Feb 25 12:38:08 ns556618 groupadd[17379]: new group: name=deluge, GID=1003
+Feb 25 12:38:08 ns556618 useradd[17383]: new user: name=deluge, UID=1003, GID=1003, home=/home/deluge, shell=/bin/bash
+Feb 25 12:38:14 ns556618 passwd[17390]: [0;1;39mpam_unix(passwd:chauthtok): password changed for deluge[0m
+Feb 25 12:38:15 ns556618 chfn[17391]: changed user 'deluge' information
+Feb 25 12:38:16 ns556618 sudo[17377]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:38:53 ns556618 sudo[17398]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/sbin/adduser plexpy[0m
+Feb 25 12:38:53 ns556618 sudo[17398]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:38:53 ns556618 groupadd[17400]: group added to /etc/group: name=plexpy, GID=1004
+Feb 25 12:38:53 ns556618 groupadd[17400]: group added to /etc/gshadow: name=plexpy
+Feb 25 12:38:53 ns556618 groupadd[17400]: new group: name=plexpy, GID=1004
+Feb 25 12:38:53 ns556618 useradd[17404]: new user: name=plexpy, UID=1004, GID=1004, home=/home/plexpy, shell=/bin/bash
+Feb 25 12:38:57 ns556618 passwd[17411]: [0;1;39mpam_unix(passwd:chauthtok): password changed for plexpy[0m
+Feb 25 12:38:58 ns556618 chfn[17412]: changed user 'plexpy' information
+Feb 25 12:38:58 ns556618 sudo[17398]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:39:01 ns556618 CRON[17419]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:39:01 ns556618 CRON[17420]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:39:01 ns556618 CRON[17419]: pam_unix(cron:session): session closed for user root
+Feb 25 12:39:17 ns556618 sudo[17465]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco ; USER=root ; COMMAND=/usr/sbin/adduser sickbeard[0m
+Feb 25 12:39:17 ns556618 sudo[17465]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:39:17 ns556618 groupadd[17467]: group added to /etc/group: name=sickbeard, GID=1005
+Feb 25 12:39:17 ns556618 groupadd[17467]: group added to /etc/gshadow: name=sickbeard
+Feb 25 12:39:17 ns556618 groupadd[17467]: new group: name=sickbeard, GID=1005
+Feb 25 12:39:17 ns556618 useradd[17471]: new user: name=sickbeard, UID=1005, GID=1005, home=/home/sickbeard, shell=/bin/bash
+Feb 25 12:39:21 ns556618 passwd[17478]: [0;1;39mpam_unix(passwd:chauthtok): password changed for sickbeard[0m
+Feb 25 12:39:23 ns556618 chfn[17479]: changed user 'sickbeard' information
+Feb 25 12:39:23 ns556618 sudo[17465]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:40:01 ns556618 CRON[17520]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:40:01 ns556618 CRON[17521]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:40:01 ns556618 CRON[17520]: pam_unix(cron:session): session closed for user root
+Feb 25 12:41:01 ns556618 CRON[17579]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:41:01 ns556618 CRON[17580]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:41:01 ns556618 CRON[17579]: pam_unix(cron:session): session closed for user root
+Feb 25 12:41:50 ns556618 sshd[17624]: Accepted password for mznco from 144.217.68.180 port 55539 ssh2
+Feb 25 12:41:50 ns556618 sshd[17624]: pam_unix(sshd:session): session opened for user mznco by (uid=0)
+Feb 25 12:42:01 ns556618 CRON[17654]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:42:01 ns556618 CRON[17655]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:42:02 ns556618 CRON[17654]: pam_unix(cron:session): session closed for user root
+Feb 25 12:43:01 ns556618 CRON[17709]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:43:01 ns556618 CRON[17710]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:43:01 ns556618 CRON[17709]: pam_unix(cron:session): session closed for user root
+Feb 25 12:44:01 ns556618 CRON[17880]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:44:01 ns556618 CRON[17881]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:44:01 ns556618 CRON[17880]: pam_unix(cron:session): session closed for user root
+Feb 25 12:45:01 ns556618 CRON[17970]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:45:01 ns556618 CRON[17971]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:45:01 ns556618 CRON[17970]: pam_unix(cron:session): session closed for user root
+Feb 25 12:46:01 ns556618 CRON[18029]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:46:01 ns556618 CRON[18030]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:46:02 ns556618 CRON[18029]: pam_unix(cron:session): session closed for user root
+Feb 25 12:47:01 ns556618 CRON[18106]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:47:01 ns556618 CRON[18107]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:47:01 ns556618 CRON[18106]: pam_unix(cron:session): session closed for user root
+Feb 25 12:47:09 ns556618 sudo[18159]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/usr/bin/apt-get install cmake[0m
+Feb 25 12:47:09 ns556618 sudo[18159]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:47:22 ns556618 sudo[18159]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:48:01 ns556618 CRON[18602]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:48:01 ns556618 CRON[18603]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:48:01 ns556618 CRON[18602]: pam_unix(cron:session): session closed for user root
+Feb 25 12:49:01 ns556618 CRON[18651]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:49:01 ns556618 CRON[18652]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:49:01 ns556618 CRON[18651]: pam_unix(cron:session): session closed for user root
+Feb 25 12:50:01 ns556618 CRON[18704]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:50:01 ns556618 CRON[18705]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:50:01 ns556618 CRON[18704]: pam_unix(cron:session): session closed for user root
+Feb 25 12:50:30 ns556618 sudo[18757]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/usr/bin/apt-get install python[0m
+Feb 25 12:50:30 ns556618 sudo[18757]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:50:30 ns556618 sudo[18757]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:50:55 ns556618 sudo[18764]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/usr/bin/apt-get install setuptools[0m
+Feb 25 12:50:55 ns556618 sudo[18764]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:50:56 ns556618 sudo[18764]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:51:01 ns556618 CRON[18771]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:51:01 ns556618 CRON[18772]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:51:01 ns556618 CRON[18771]: pam_unix(cron:session): session closed for user root
+Feb 25 12:51:32 ns556618 sudo[18820]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/usr/bin/apt-get install pip[0m
+Feb 25 12:51:32 ns556618 sudo[18820]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:51:33 ns556618 sudo[18820]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:52:01 ns556618 CRON[18829]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:52:01 ns556618 CRON[18830]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:52:01 ns556618 CRON[18829]: pam_unix(cron:session): session closed for user root
+Feb 25 12:52:23 ns556618 sudo[18886]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/usr/bin/python get-pip.py[0m
+Feb 25 12:52:23 ns556618 sudo[18886]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:52:27 ns556618 sudo[18886]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:53:01 ns556618 sudo[18930]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/usr/local/bin/pip install virtualenv[0m
+Feb 25 12:53:01 ns556618 sudo[18930]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:53:01 ns556618 CRON[18933]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:53:01 ns556618 CRON[18934]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:53:01 ns556618 CRON[18933]: pam_unix(cron:session): session closed for user root
+Feb 25 12:53:03 ns556618 sudo[18930]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:53:08 ns556618 sudo[18993]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=./install.py[0m
+Feb 25 12:53:08 ns556618 sudo[18993]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:53:08 ns556618 sudo[18993]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:53:53 ns556618 sudo[19002]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/usr/bin/apt-get install python-dev[0m
+Feb 25 12:53:53 ns556618 sudo[19002]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:54:01 ns556618 CRON[19048]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:54:01 ns556618 CRON[19049]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:54:01 ns556618 CRON[19048]: pam_unix(cron:session): session closed for user root
+Feb 25 12:54:06 ns556618 sudo[19002]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:54:18 ns556618 sudo[19324]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=./install.py[0m
+Feb 25 12:54:18 ns556618 sudo[19324]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:54:19 ns556618 sudo[19324]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:55:01 ns556618 CRON[19417]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:55:01 ns556618 CRON[19418]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:55:02 ns556618 CRON[19417]: pam_unix(cron:session): session closed for user root
+Feb 25 12:56:01 ns556618 CRON[19477]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:56:01 ns556618 CRON[19478]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:56:01 ns556618 CRON[19477]: pam_unix(cron:session): session closed for user root
+Feb 25 12:56:48 ns556618 sudo[19529]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=./install.py[0m
+Feb 25 12:56:48 ns556618 sudo[19529]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:56:49 ns556618 sudo[19529]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:57:01 ns556618 CRON[19607]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:57:01 ns556618 CRON[19608]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:57:01 ns556618 CRON[19609]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Feb 25 12:57:01 ns556618 CRON[19610]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:57:01 ns556618 CRON[19608]: pam_unix(cron:session): session closed for user root
+Feb 25 12:57:01 ns556618 CRON[19607]: pam_unix(cron:session): session closed for user root
+Feb 25 12:58:01 ns556618 CRON[19665]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:58:01 ns556618 CRON[19666]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:58:01 ns556618 CRON[19665]: pam_unix(cron:session): session closed for user root
+Feb 25 12:59:01 ns556618 CRON[19714]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 12:59:01 ns556618 CRON[19715]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 12:59:01 ns556618 CRON[19714]: pam_unix(cron:session): session closed for user root
+Feb 25 12:59:32 ns556618 sudo[19766]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=./install.py[0m
+Feb 25 12:59:32 ns556618 sudo[19766]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:59:32 ns556618 sudo[19766]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:59:45 ns556618 sudo[19848]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/usr/bin/apt-get install g++[0m
+Feb 25 12:59:45 ns556618 sudo[19848]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 12:59:53 ns556618 sudo[19848]: pam_unix(sudo:session): session closed for user root
+Feb 25 12:59:56 ns556618 sudo[20103]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=./install.py[0m
+Feb 25 12:59:56 ns556618 sudo[20103]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 13:00:01 ns556618 CRON[20335]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:00:01 ns556618 CRON[20336]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:00:02 ns556618 CRON[20335]: pam_unix(cron:session): session closed for user root
+Feb 25 13:00:27 ns556618 sudo[20103]: pam_unix(sudo:session): session closed for user root
+Feb 25 13:01:01 ns556618 CRON[20642]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:01:01 ns556618 CRON[20643]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:01:01 ns556618 CRON[20642]: pam_unix(cron:session): session closed for user root
+Feb 25 13:02:01 ns556618 CRON[20687]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:02:01 ns556618 CRON[20688]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:02:01 ns556618 CRON[20687]: pam_unix(cron:session): session closed for user root
+Feb 25 13:03:01 ns556618 CRON[20732]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:03:01 ns556618 CRON[20733]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:03:01 ns556618 CRON[20732]: pam_unix(cron:session): session closed for user root
+Feb 25 13:04:01 ns556618 CRON[20778]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:04:01 ns556618 CRON[20779]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:04:01 ns556618 CRON[20778]: pam_unix(cron:session): session closed for user root
+Feb 25 13:05:01 ns556618 CRON[20824]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:05:01 ns556618 CRON[20825]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:05:01 ns556618 CRON[20824]: pam_unix(cron:session): session closed for user root
+Feb 25 13:06:01 ns556618 CRON[20869]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:06:01 ns556618 CRON[20870]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:06:01 ns556618 CRON[20869]: pam_unix(cron:session): session closed for user root
+Feb 25 13:07:01 ns556618 CRON[20914]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:07:01 ns556618 CRON[20915]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:07:01 ns556618 CRON[20914]: pam_unix(cron:session): session closed for user root
+Feb 25 13:08:01 ns556618 CRON[20959]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:08:01 ns556618 CRON[20960]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:08:01 ns556618 CRON[20959]: pam_unix(cron:session): session closed for user root
+Feb 25 13:09:01 ns556618 CRON[21004]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:09:01 ns556618 CRON[21005]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:09:02 ns556618 CRON[21004]: pam_unix(cron:session): session closed for user root
+Feb 25 13:10:01 ns556618 CRON[21049]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:10:01 ns556618 CRON[21050]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:10:01 ns556618 CRON[21049]: pam_unix(cron:session): session closed for user root
+Feb 25 13:10:23 ns556618 sudo[21101]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/sbin/ifconfig eth1 down[0m
+Feb 25 13:10:23 ns556618 sudo[21101]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 13:10:23 ns556618 sudo[21101]: pam_unix(sudo:session): session closed for user root
+Feb 25 13:10:26 ns556618 sudo[21106]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/sbin/ifconfig eth1 up[0m
+Feb 25 13:10:26 ns556618 sudo[21106]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 13:10:26 ns556618 systemd-udevd[10593]: Network interface NamePolicy= disabled on kernel command line, ignoring.
+Feb 25 13:10:26 ns556618 kernel: ixgbe 0000:03:00.1: registered PHC device on eth1
+Feb 25 13:10:26 ns556618 sudo[21106]: pam_unix(sudo:session): session closed for user root
+Feb 25 13:10:26 ns556618 kernel: IPv6: ADDRCONF(NETDEV_UP): eth1: link is not ready
+Feb 25 13:10:26 ns556618 kernel: 8021q: adding VLAN 0 to HW filter on device eth1
+Feb 25 13:10:30 ns556618 kernel: ixgbe 0000:03:00.1 eth1: NIC Link is Up 1 Gbps, Flow Control: None
+Feb 25 13:10:30 ns556618 kernel: IPv6: ADDRCONF(NETDEV_CHANGE): eth1: link becomes ready
+Feb 25 13:10:38 ns556618 sudo[21128]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/sbin/ethtool eth1[0m
+Feb 25 13:10:38 ns556618 sudo[21128]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 13:10:38 ns556618 sudo[21128]: pam_unix(sudo:session): session closed for user root
+Feb 25 13:10:47 ns556618 sudo[21134]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/sbin/ethtool eth1[0m
+Feb 25 13:10:47 ns556618 sudo[21134]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 13:10:47 ns556618 sudo[21134]: pam_unix(sudo:session): session closed for user root
+Feb 25 13:11:01 ns556618 CRON[21140]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:11:01 ns556618 CRON[21141]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:11:01 ns556618 CRON[21140]: pam_unix(cron:session): session closed for user root
+Feb 25 13:11:20 ns556618 sudo[21189]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/usr/bin/apt-get install arping[0m
+Feb 25 13:11:20 ns556618 sudo[21189]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 13:11:29 ns556618 sudo[21189]: pam_unix(sudo:session): session closed for user root
+Feb 25 13:11:35 ns556618 sudo[21673]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/usr/sbin/arping -i eth1 1.1.1.1[0m
+Feb 25 13:11:35 ns556618 sudo[21673]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 13:11:36 ns556618 sudo[21673]: pam_unix(sudo:session): session closed for user root
+Feb 25 13:12:01 ns556618 CRON[21678]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:12:01 ns556618 CRON[21679]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:12:01 ns556618 CRON[21678]: pam_unix(cron:session): session closed for user root
+Feb 25 13:13:01 ns556618 CRON[21787]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:13:01 ns556618 CRON[21788]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:13:01 ns556618 CRON[21787]: pam_unix(cron:session): session closed for user root
+Feb 25 13:13:09 ns556618 sshd[17651]: Received disconnect from 144.217.68.180 port 55539:11: disconnected by user
+Feb 25 13:13:09 ns556618 sshd[17651]: Disconnected from 144.217.68.180 port 55539
+Feb 25 13:13:09 ns556618 sshd[17624]: pam_unix(sshd:session): session closed for user mznco
+Feb 25 13:13:37 ns556618 sudo[21835]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/usr/bin/vim /etc/network/interfaces[0m
+Feb 25 13:13:37 ns556618 sudo[21835]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 13:14:01 ns556618 CRON[21907]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:14:01 ns556618 CRON[21908]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:14:01 ns556618 CRON[21907]: pam_unix(cron:session): session closed for user root
+Feb 25 13:14:29 ns556618 sudo[21835]: pam_unix(sudo:session): session closed for user root
+Feb 25 13:14:34 ns556618 sudo[21956]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/usr/sbin/service networking restart[0m
+Feb 25 13:14:34 ns556618 sudo[21956]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)
+Feb 25 13:14:34 ns556618 systemd[1]: Stopped Raise network interfaces.
+-- Subject: Unit networking.service has finished shutting down
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit networking.service has finished shutting down.
+Feb 25 13:14:34 ns556618 systemd[1]: Starting Raise network interfaces...
+-- Subject: Unit networking.service has begun start-up
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit networking.service has begun starting up.
+Feb 25 13:14:34 ns556618 ifup[21969]: RTNETLINK answers: File exists
+Feb 25 13:14:34 ns556618 ifup[21969]: Failed to bring up eth0.
+Feb 25 13:14:34 ns556618 named[15891]: received control channel command 'reconfig'
+Feb 25 13:14:34 ns556618 named[15891]: loading configuration from '/etc/bind/named.conf'
+Feb 25 13:14:34 ns556618 named[15891]: reading built-in trusted keys from file '/etc/bind/bind.keys'
+Feb 25 13:14:34 ns556618 named[15891]: initializing GeoIP Country (IPv4) (type 1) DB
+Feb 25 13:14:34 ns556618 named[15891]: GEO-106FREE 20160408 Bu
+Feb 25 13:14:34 ns556618 named[15891]: initializing GeoIP Country (IPv6) (type 12) DB
+Feb 25 13:14:34 ns556618 named[15891]: GEO-106FREE 20160408 Bu
+Feb 25 13:14:34 ns556618 named[15891]: GeoIP City (IPv4) (type 2) DB not available
+Feb 25 13:14:34 ns556618 named[15891]: GeoIP City (IPv4) (type 6) DB not available
+Feb 25 13:14:34 ns556618 named[15891]: GeoIP City (IPv6) (type 30) DB not available
+Feb 25 13:14:34 ns556618 named[15891]: GeoIP City (IPv6) (type 31) DB not available
+Feb 25 13:14:34 ns556618 named[15891]: GeoIP Region (type 3) DB not available
+Feb 25 13:14:34 ns556618 named[15891]: GeoIP Region (type 7) DB not available
+Feb 25 13:14:34 ns556618 named[15891]: GeoIP ISP (type 4) DB not available
+Feb 25 13:14:34 ns556618 named[15891]: GeoIP Org (type 5) DB not available
+Feb 25 13:14:34 ns556618 named[15891]: GeoIP AS (type 9) DB not available
+Feb 25 13:14:34 ns556618 named[15891]: GeoIP Domain (type 11) DB not available
+Feb 25 13:14:34 ns556618 named[15891]: GeoIP NetSpeed (type 10) DB not available
+Feb 25 13:14:34 ns556618 named[15891]: using default UDP/IPv4 port range: [32768, 60999]
+Feb 25 13:14:34 ns556618 named[15891]: using default UDP/IPv6 port range: [32768, 60999]
+Feb 25 13:14:34 ns556618 named[15891]: sizing zone task pool based on 5 zones
+Feb 25 13:14:34 ns556618 named[15891]: using built-in root key for view _default
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 10.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 16.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 17.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 18.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 19.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 20.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 21.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 22.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 23.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 24.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 25.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 26.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 27.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 28.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 29.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 30.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 31.172.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 168.192.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 64.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 65.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 66.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 67.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 68.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 69.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 70.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 71.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 72.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 73.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 74.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 75.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 76.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 77.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 78.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 79.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 80.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 81.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 82.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 83.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 84.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 85.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 86.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 87.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 88.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 89.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 90.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 91.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 92.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 93.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 94.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 95.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 96.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 97.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 98.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 99.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 100.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 101.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 102.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 103.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 104.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 105.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 106.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 107.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 108.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 109.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 110.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 111.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 112.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 113.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 114.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 115.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 116.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 117.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 118.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 119.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 120.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 121.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 122.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 123.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 124.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 125.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 126.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 127.100.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 254.169.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 2.0.192.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 100.51.198.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 113.0.203.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 255.255.255.255.IN-ADDR.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: D.F.IP6.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 8.E.F.IP6.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 9.E.F.IP6.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: A.E.F.IP6.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: B.E.F.IP6.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: 8.B.D.0.1.0.0.2.IP6.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: automatic empty zone: EMPTY.AS112.ARPA
+Feb 25 13:14:34 ns556618 named[15891]: configuring command channel from '/etc/bind/rndc.key'
+Feb 25 13:14:34 ns556618 named[15891]: configuring command channel from '/etc/bind/rndc.key'
+Feb 25 13:14:34 ns556618 named[15891]: reloading configuration succeeded
+Feb 25 13:14:34 ns556618 named[15891]: any newly configured zones are now loaded
+Feb 25 13:14:49 ns556618 systemd[1]: Reloading OpenBSD Secure Shell server.
+-- Subject: Unit ssh.service has begun reloading its configuration
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit ssh.service has begun reloading its configuration
+Feb 25 13:14:49 ns556618 sshd[19395]: Received SIGHUP; restarting.
+Feb 25 13:14:49 ns556618 systemd[1]: Reloaded OpenBSD Secure Shell server.
+-- Subject: Unit ssh.service has finished reloading its configuration
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit ssh.service has finished reloading its configuration
+-- 
+-- The result is done.
+Feb 25 13:14:49 ns556618 named[15891]: received control channel command 'reconfig'
+Feb 25 13:14:49 ns556618 named[15891]: loading configuration from '/etc/bind/named.conf'
+Feb 25 13:14:49 ns556618 named[15891]: reading built-in trusted keys from file '/etc/bind/bind.keys'
+Feb 25 13:14:49 ns556618 named[15891]: initializing GeoIP Country (IPv4) (type 1) DB
+Feb 25 13:14:49 ns556618 named[15891]: GEO-106FREE 20160408 Bu
+Feb 25 13:14:49 ns556618 named[15891]: initializing GeoIP Country (IPv6) (type 12) DB
+Feb 25 13:14:49 ns556618 named[15891]: GEO-106FREE 20160408 Bu
+Feb 25 13:14:49 ns556618 named[15891]: GeoIP City (IPv4) (type 2) DB not available
+Feb 25 13:14:49 ns556618 named[15891]: GeoIP City (IPv4) (type 6) DB not available
+Feb 25 13:14:49 ns556618 named[15891]: GeoIP City (IPv6) (type 30) DB not available
+Feb 25 13:14:49 ns556618 named[15891]: GeoIP City (IPv6) (type 31) DB not available
+Feb 25 13:14:49 ns556618 named[15891]: GeoIP Region (type 3) DB not available
+Feb 25 13:14:49 ns556618 named[15891]: GeoIP Region (type 7) DB not available
+Feb 25 13:14:49 ns556618 named[15891]: GeoIP ISP (type 4) DB not available
+Feb 25 13:14:49 ns556618 named[15891]: GeoIP Org (type 5) DB not available
+Feb 25 13:14:49 ns556618 named[15891]: GeoIP AS (type 9) DB not available
+Feb 25 13:14:49 ns556618 named[15891]: GeoIP Domain (type 11) DB not available
+Feb 25 13:14:49 ns556618 named[15891]: GeoIP NetSpeed (type 10) DB not available
+Feb 25 13:14:49 ns556618 named[15891]: using default UDP/IPv4 port range: [32768, 60999]
+Feb 25 13:14:49 ns556618 named[15891]: using default UDP/IPv6 port range: [32768, 60999]
+Feb 25 13:14:49 ns556618 named[15891]: sizing zone task pool based on 5 zones
+Feb 25 13:14:49 ns556618 named[15891]: using built-in root key for view _default
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 10.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 16.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 17.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 18.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 19.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 20.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 21.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 22.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 23.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 24.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 25.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 26.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 27.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 28.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 29.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 30.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 31.172.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 168.192.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 64.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 65.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 66.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 67.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 68.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 69.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 70.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 71.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 72.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 73.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 74.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 75.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 76.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 77.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 78.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 79.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 80.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 81.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 82.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 83.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 84.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 85.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 86.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 87.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 88.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 89.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 90.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 91.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 92.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 93.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 94.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 95.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 96.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 sshd[19395]: Server listening on 0.0.0.0 port 22.
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 97.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 98.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 sshd[19395]: Server listening on :: port 22.
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 99.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 100.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 101.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 102.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 103.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 104.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 105.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 106.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 107.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 108.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 109.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 110.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 111.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 112.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 113.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 114.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 115.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 116.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 117.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 118.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 119.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 120.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 121.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 122.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 123.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 124.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 125.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 126.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 127.100.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 254.169.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 2.0.192.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 100.51.198.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 113.0.203.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 255.255.255.255.IN-ADDR.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.IP6.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: D.F.IP6.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 8.E.F.IP6.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 9.E.F.IP6.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: A.E.F.IP6.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: B.E.F.IP6.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: 8.B.D.0.1.0.0.2.IP6.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: automatic empty zone: EMPTY.AS112.ARPA
+Feb 25 13:14:49 ns556618 named[15891]: configuring command channel from '/etc/bind/rndc.key'
+Feb 25 13:14:49 ns556618 named[15891]: configuring command channel from '/etc/bind/rndc.key'
+Feb 25 13:14:49 ns556618 named[15891]: reloading configuration succeeded
+Feb 25 13:14:49 ns556618 named[15891]: any newly configured zones are now loaded
+Feb 25 13:14:59 ns556618 systemd[1]: Time has been changed
+-- Subject: Time change
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- The system clock has been changed to REALTIME microseconds after January 1st, 1970.
+Feb 25 13:14:59 ns556618 ntpdate[22023]: [0;1;39mstep time server 91.189.91.157 offset 0.000036 sec[0m
+Feb 25 13:15:01 ns556618 CRON[22056]: pam_unix(cron:session): session opened for user root by (uid=0)
+Feb 25 13:15:01 ns556618 CRON[22057]: (root) CMD (/usr/local/rtm/bin/rtm 43 > /dev/null 2> /dev/null)
+Feb 25 13:15:01 ns556618 CRON[22056]: pam_unix(cron:session): session closed for user root
+Feb 25 13:15:04 ns556618 systemd[1]: [0;1;39mnetworking.service: Main process exited, code=exited, status=1/FAILURE[0m
+Feb 25 13:15:04 ns556618 systemd[1]: [0;1;31mFailed to start Raise network interfaces.[0m
+-- Subject: Unit networking.service has failed
+-- Defined-By: systemd
+-- Support: http://lists.freedesktop.org/mailman/listinfo/systemd-devel
+-- 
+-- Unit networking.service has failed.
+-- 
+-- The result is failed.
+Feb 25 13:15:04 ns556618 systemd[1]: [0;1;39mnetworking.service: Unit entered failed state.[0m
+Feb 25 13:15:04 ns556618 systemd[1]: [0;1;39mnetworking.service: Failed with result 'exit-code'.[0m
+Feb 25 13:15:04 ns556618 sudo[21956]: pam_unix(sudo:session): session closed for user root
+Feb 25 13:15:18 ns556618 sudo[22121]: [0;1;39m   mznco : TTY=pts/0 ; PWD=/home/mznco/server-dotfiles/.vim/bundle/YouCompleteMe ; USER=root ; COMMAND=/bin/journalctl -xe[0m
+Feb 25 13:15:18 ns556618 sudo[22121]: pam_unix(sudo:session): session opened for user root by mznco(uid=0)

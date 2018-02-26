@@ -69,3 +69,8 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Pretty Python code
 let python_highlight_all=1
 syntax on
+
+" Return to last position when reopening a file
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
