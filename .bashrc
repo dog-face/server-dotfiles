@@ -108,6 +108,7 @@ alias gitpurge='git fetch -p && for branch in `git branch -vv | grep ": gone]" |
 # polite file management
 alias mv='mv -i'
 alias cp='cp -i'
+alias rm='rm -i'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
