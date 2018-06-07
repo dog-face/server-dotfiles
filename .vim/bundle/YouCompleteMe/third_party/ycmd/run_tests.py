@@ -150,11 +150,11 @@ def FixupCompleters( parsed_args ):
   elif parsed_args.no_clang_completer:
     print( 'WARNING: The "--no-clang-completer" flag is deprecated. '
            'Please use "--no-completers cfamily" instead.' )
-    completers.remove( 'cfamily' )
+    completers.discard( 'cfamily' )
 
   if 'USE_CLANG_COMPLETER' in os.environ:
     if os.environ[ 'USE_CLANG_COMPLETER' ] == 'false':
-      completers.remove( 'cfamily' )
+      completers.discard( 'cfamily' )
     else:
       completers.add( 'cfamily' )
 
@@ -173,6 +173,7 @@ def BuildYcmdLibs( args ):
     build_cmd = [
       sys.executable,
       p.join( DIR_OF_THIS_SCRIPT, 'build.py' ),
+      '--quiet',
     ]
 
     for key in COMPLETERS:
@@ -232,6 +233,7 @@ def Main():
     RunFlake8()
   BuildYcmdLibs( parsed_args )
   NoseTests( parsed_args, nosetests_args )
+
 
 if __name__ == "__main__":
   Main()

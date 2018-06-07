@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=1000000
+HISTFILESIZE=2000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -105,6 +105,9 @@ alias gitmm='git checkout master && git pull && git checkout - && git merge mast
 alias gitclean='git checkout master && git pull && git branch --merged | grep -v \* | xargs git branch -d'
 alias gitpurge='git fetch -p && for branch in `git branch -vv | grep ": gone]" | awk "{print $1}"`; do git branch -D $branch; done'
 
+# polite file management
+alias mv='mv -i'
+alias cp='cp -i'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

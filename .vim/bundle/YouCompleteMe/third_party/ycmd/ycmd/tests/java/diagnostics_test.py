@@ -44,7 +44,7 @@ from ycmd.tests.java import ( DEFAULT_PROJECT_DIR,
                               SharedYcmd,
                               StartJavaCompleterServerInDirectory )
 
-from ycmd.tests.test_utils import BuildRequest, LocationMatcher
+from ycmd.tests.test_utils import BuildRequest, LocationMatcher, WithRetry
 from ycmd.utils import ReadFile
 from ycmd.completers import completer
 
@@ -241,6 +241,7 @@ def _WaitForDiagnosticsToBeReady( app, filepath, contents, **kwargs ):
   return results
 
 
+@WithRetry
 @SharedYcmd
 def FileReadyToParse_Diagnostics_Simple_test( app ):
   filepath = ProjectPath( 'TestFactory.java' )
@@ -310,6 +311,7 @@ def FileReadyToParse_Diagnostics_FileNotOnDisk_test( app ):
   assert_that( results, diag_matcher )
 
 
+@WithRetry
 @SharedYcmd
 def Poll_Diagnostics_ProjectWide_Eclipse_test( app ):
   filepath = TestLauncher
@@ -337,6 +339,10 @@ def Poll_Diagnostics_ProjectWide_Eclipse_test( app ):
 
       if sorted( iterkeys( seen ) ) == to_see:
         break
+      else:
+        print( 'Seen diagnostics for {0}, still waiting for {1}'.format(
+          json.dumps( sorted( iterkeys( seen ) ), indent=2 ),
+          json.dumps( [ x for x in to_see if x not in seen ], indent=2 ) ) )
 
       # Eventually PollForMessages will throw a timeout exception and we'll fail
       # if we don't see all of the expected diags
@@ -347,6 +353,88 @@ def Poll_Diagnostics_ProjectWide_Eclipse_test( app ):
       'Expected to see diags for {0}, but only saw {1}.'.format(
         json.dumps( to_see, indent=2 ),
         json.dumps( sorted( iterkeys( seen ) ), indent=2 ) ) )
+
+
+@IsolatedYcmd
+def Poll_Diagnostics_ChangeFileContents_test( app ):
+  StartJavaCompleterServerInDirectory( app,
+                                       PathToTestFile( DEFAULT_PROJECT_DIR ) )
+
+  filepath = youcompleteme_Test
+  old_contents = """package com.youcompleteme;
+
+public class Test {
+  public String test;
+}"""
+
+  messages_for_filepath = []
+
+  def PollForMessagesInAnotherThread( filepath, contents ):
+    for message in PollForMessages( app,
+                                    { 'filepath': filepath,
+                                      'contents': contents } ):
+      if 'filepath' in message and message[ 'filepath' ] == filepath:
+        messages_for_filepath.append( message )
+
+  poll_task = threading.Thread( target = PollForMessagesInAnotherThread,
+                                args = ( filepath, old_contents ) )
+  poll_task.daemon = True
+  poll_task.start()
+
+  new_contents = """package com.youcompleteme;
+
+public class Test {
+  public String test;
+  public String test;
+}"""
+
+  event_data = BuildRequest( event_name = 'FileReadyToParse',
+                             contents = new_contents,
+                             filepath = filepath,
+                             filetype = 'java' )
+  app.post_json( '/event_notification', event_data ).json
+
+  expiration = time.time() + 10
+  while True:
+    try:
+      assert_that(
+        messages_for_filepath,
+        has_item( has_entries( {
+          'filepath': filepath,
+          'diagnostics': contains(
+            has_entries( {
+              'kind': 'ERROR',
+              'text': 'Duplicate field Test.test',
+              'location': LocationMatcher( youcompleteme_Test, 4, 17 ),
+              'location_extent': RangeMatch( youcompleteme_Test,
+                                             ( 4, 17 ),
+                                             ( 4, 21 ) ),
+              'ranges': contains( RangeMatch( youcompleteme_Test,
+                                              ( 4, 17 ),
+                                              ( 4, 21 ) ) ),
+              'fixit_available': False
+            } ),
+            has_entries( {
+              'kind': 'ERROR',
+              'text': 'Duplicate field Test.test',
+              'location': LocationMatcher( youcompleteme_Test, 5, 17 ),
+              'location_extent': RangeMatch( youcompleteme_Test,
+                                             ( 5, 17 ),
+                                             ( 5, 21 ) ),
+              'ranges': contains( RangeMatch( youcompleteme_Test,
+                                              ( 5, 17 ),
+                                              ( 5, 21 ) ) ),
+              'fixit_available': False
+            } )
+          )
+        } ) )
+      )
+      break
+    except AssertionError:
+      if time.time() > expiration:
+        raise
+
+      time.sleep( 0.25 )
 
 
 @IsolatedYcmd
@@ -361,21 +449,32 @@ def FileReadyToParse_Diagnostics_InvalidURI_test( app, uri_to_filepath, *args ):
   contents = ReadFile( filepath )
 
   # It can take a while for the diagnostics to be ready
-  results = _WaitForDiagnosticsToBeReady( app, filepath, contents )
-  print( 'Completer response: {0}'.format( json.dumps( results, indent=2 ) ) )
+  expiration = time.time() + 10
+  while True:
+    try:
+      results = _WaitForDiagnosticsToBeReady( app, filepath, contents )
+      print( 'Completer response: {0}'.format(
+        json.dumps( results, indent=2 ) ) )
 
-  uri_to_filepath.assert_called()
+      uri_to_filepath.assert_called()
 
-  assert_that( results, has_item(
-    has_entries( {
-      'kind': 'WARNING',
-      'text': 'The value of the field TestFactory.Bar.testString is not used',
-      'location': LocationMatcher( '', 15, 19 ),
-      'location_extent': RangeMatch( '', ( 15, 19 ), ( 15, 29 ) ),
-      'ranges': contains( RangeMatch( '', ( 15, 19 ), ( 15, 29 ) ) ),
-      'fixit_available': False
-    } ),
-  ) )
+      assert_that( results, has_item(
+        has_entries( {
+          'kind': 'WARNING',
+          'text': 'The value of the field TestFactory.Bar.testString is not '
+                  'used',
+          'location': LocationMatcher( '', 15, 19 ),
+          'location_extent': RangeMatch( '', ( 15, 19 ), ( 15, 29 ) ),
+          'ranges': contains( RangeMatch( '', ( 15, 19 ), ( 15, 29 ) ) ),
+          'fixit_available': False
+        } ),
+      ) )
+
+      return
+    except AssertionError:
+      if time.time() > expiration:
+        raise
+      time.sleep( 0.25 )
 
 
 @IsolatedYcmd
@@ -549,6 +648,7 @@ def FileReadyToParse_ChangeFileContentsFileData_test( app ):
   assert_that( diags, DIAG_MATCHERS_PER_FILE[ unsaved_buffer_path ] )
 
 
+@WithRetry
 @SharedYcmd
 def OnBufferUnload_ServerNotRunning_test( app ):
   filepath = TestFactory

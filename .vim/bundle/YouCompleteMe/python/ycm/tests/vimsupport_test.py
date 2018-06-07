@@ -544,6 +544,16 @@ def ReplaceChunk_NewlineChunk_test():
                                   'second line' ], result_buffer )
 
 
+def ReplaceChunk_BeyondEndOfFile_test():
+  result_buffer = VimBuffer( 'buffer', contents = [ 'first line',
+                                                    'second line' ] )
+
+  start, end = _BuildLocations( 1, 11, 3, 1 )
+  vimsupport.ReplaceChunk( start, end, '\n', result_buffer )
+
+  AssertBuffersAreEqualAsBytes( [ 'first line' ], result_buffer )
+
+
 def _BuildLocations( start_line, start_column, end_line, end_column ):
   return {
     'line_num'  : start_line,
@@ -719,11 +729,6 @@ def ReplaceChunks_SingleFile_Open_test( vim_command,
       'type': 'F'
     } ] ) ) ),
   ] )
-  vim_command.assert_has_exact_calls( [
-    call( 'botright copen' ),
-    call( 'silent! wincmd p' )
-  ] )
-  set_fitting_height.assert_called_once_with()
 
   # And it is ReplaceChunks that prints the message showing the number of
   # changes
@@ -817,10 +822,7 @@ def ReplaceChunks_SingleFile_NotOpen_test( vim_command,
   vim_command.assert_has_exact_calls( [
     call( 'lclose' ),
     call( 'hide' ),
-    call( 'botright copen' ),
-    call( 'silent! wincmd p' )
   ] )
-  set_fitting_height.assert_called_once_with()
 
   # And update the quickfix list
   vim_eval.assert_has_exact_calls( [
@@ -1202,10 +1204,7 @@ def ReplaceChunks_MultiFile_Open_test( vim_command,
   vim_command.assert_has_exact_calls( [
     call( 'lclose' ),
     call( 'hide' ),
-    call( 'botright copen' ),
-    call( 'silent! wincmd p' )
   ] )
-  set_fitting_height.assert_called_once_with()
 
   # And update the quickfix list with each entry
   vim_eval.assert_has_exact_calls( [
@@ -1279,6 +1278,19 @@ def AddDiagnosticSyntaxMatch_WarningAtEndOfLine_test():
     assert_that(
       vimsupport.GetDiagnosticMatchPattern( 1, 16, 1, 23 ),
       equal_to( '\%1l\%16c\_.\{-}\%1l\%23c' )
+    )
+
+
+def AddDiagnosticSyntaxMatch_UnicodeAtEndOfLine_test():
+  current_buffer = VimBuffer(
+    'some_file',
+    contents = [ 'Highlight unicøde' ]
+  )
+
+  with patch( 'vim.current.buffer', current_buffer ):
+    assert_that(
+      vimsupport.GetDiagnosticMatchPattern( 1, 16, 1, 19 ),
+      equal_to( '\%1l\%16c\_.\{-}\%1l\%19c' )
     )
 
 
