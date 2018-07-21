@@ -70,6 +70,10 @@ nnoremap tp         :tabprevious<CR>
 nnoremap tn         :tabnext<CR>
 nnoremap <C-t>      :tabnew<CR>
 
+" Paste last yanked
+nnoremap [  "0p
+nnoremap {  "0P
+
 " Start NERDTree
 autocmd vimenter * NERDTree
 " Go to previous (last accessed) window.
