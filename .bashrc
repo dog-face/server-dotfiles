@@ -8,6 +8,10 @@ case $- in
       *) return;;
 esac
 
+# history -a causes the last command to be written to the
+# history file automatically and history -r imports the history
+export PROMPT_COMMAND='history -a;history -r'
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
